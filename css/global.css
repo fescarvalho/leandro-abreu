@@ -9,11 +9,16 @@
 * {
   margin: 0;
 }
-
+html {
+  overflow-x: hidden;
+  background-color: #eee;
+}
 body {
   padding: 0;
 }
-
+h1 {
+  font-family: Poppins, sans-serif;
+}
 /* 3. Enable keyword animations */
 @media (prefers-reduced-motion: no-preference) {
   html {
