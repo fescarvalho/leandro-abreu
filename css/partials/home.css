@@ -11,6 +11,13 @@
   /* para deixar espaço para o header fixo */
 }
 
+.btn-home {
+  font-family: "Raleway", sans-serif;
+  font-weight: bold;
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
 .home-text {
   text-align: left;
   width: 100vw;
@@ -60,7 +67,7 @@ nav {
   color: #bb974d;
   margin-left: 20px;
   font-family: Quando, sans-serif;
-  font-size: 18px;
+  font-size: 16px;
   cursor: pointer;
 }
 .header-list li:hover {

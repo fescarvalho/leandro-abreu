@@ -88,6 +88,8 @@ const observer = new IntersectionObserver(
 
 contadores.forEach((el) => observer.observe(el));
 
+/* Numeros */
+
 document.addEventListener("DOMContentLoaded", function () {
   const clientes = document.querySelectorAll(".clientes");
   const anos = document.querySelectorAll(".anos");
@@ -109,3 +111,39 @@ document.addEventListener("DOMContentLoaded", function () {
   clientes.forEach((clientes) => observer.observe(clientes));
   anos.forEach((anos) => observer.observe(anos));
 });
+
+/* Depoimentos */
+const wrapper = document.querySelector(".carrossel-wrapper");
+const cadsDp = document.querySelectorAll(".card");
+const totalSlides = cadsDp.length;
+const slidesPerView = 3;
+const totalGroups = Math.ceil(totalSlides / slidesPerView);
+const dotsContainer = document.querySelector(".carrossel-dots");
+let index = 0;
+
+function moveCarousel() {
+  const percentage = (100 / slidesPerView) * slidesPerView * index;
+  wrapper.style.transform = `translateX(-${percentage}%)`;
+  updateDots();
+}
+
+function createDots() {
+  for (let i = 0; i < totalGroups; i++) {
+    const dot = document.createElement("button");
+    dot.addEventListener("click", () => {
+      index = i;
+      moveCarousel();
+    });
+    dotsContainer.appendChild(dot);
+  }
+}
+
+function updateDots() {
+  const dots = document.querySelectorAll(".carrossel-dots button");
+  dots.forEach((dot) => dot.classList.remove("active"));
+  if (dots[index]) dots[index].classList.add("active");
+}
+
+// Inicializar
+createDots();
+moveCarousel();

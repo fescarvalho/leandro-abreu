@@ -1,0 +1,113 @@
+.depoimentos {
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+  height: 100%;
+}
+
+.dp-text {
+  width: 100%;
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.depoimentos h1 {
+  font-family: "Poppins", sans-serif;
+  font-size: 3rem;
+}
+.depoimentos span {
+  color: #d4a72c;
+}
+
+.carrossel-container {
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+
+  padding: 30px 0;
+}
+
+.carrossel-wrapper {
+  display: flex;
+  transition: transform 0.6s ease;
+  width: 100%;
+  max-width: 1200px;
+  gap: 40px;
+}
+
+.cadsDp {
+  position: relative;
+  flex: 0 0 33.3333%;
+  padding: 20px;
+  background-color: #111;
+  color: white;
+  text-align: center;
+  border-radius: 15px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: translateY(8px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.cadsDp:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(255, 215, 0, 0.3);
+}
+
+.cadsDp .avatar {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  top: -30px;
+  background: #fff;
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+.cadsDp .avatar img {
+  width: 100%;
+}
+.cadsDp h3 {
+  margin-top: 10px;
+  font-size: 1.2rem;
+  font-family: "Quando", sans-serif;
+  color: #d4a72c;
+}
+
+.cadsDp h4 {
+  font-size: 0.9rem;
+  font-family: "Raleway", sans-serif;
+  font-weight: 200;
+  margin-bottom: 10px;
+  font-style: italic;
+}
+
+.cadsDp p {
+  font-size: 1rem;
+  font-family: "Poppins", sans-serif;
+  font-weight: 200;
+  margin-bottom: 20px;
+}
+/* Bolinhas de navegação */
+.carrossel-dots {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.carrossel-dots button {
+  width: 12px;
+  height: 12px;
+  margin: 0 5px;
+  border-radius: 50%;
+  border: 1px solid goldenrod;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.carrossel-dots button.active {
+  background-color: goldenrod;
+}

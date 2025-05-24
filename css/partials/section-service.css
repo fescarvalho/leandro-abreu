@@ -1,7 +1,7 @@
 .service {
   position: relative;
   width: 100vw;
-  background-image: url("../../assest/imgs/textura.png");
+
   background-size: cover;
   background-repeat: no-repeat;
   top: 0;
