@@ -32,6 +32,22 @@ body {
   /* 5. Improve text rendering */
   -webkit-font-smoothing: antialiased;
 }
+button {
+  background-color: rgba(16, 16, 16, 0.7);
+  border: none;
+  width: 200px;
+  height: 50px;
+  color: #bb974d;
+  cursor: pointer;
+  font-family: Quando, sans-serif;
+  border: 1px solid #bb974d;
+}
+
+button:hover {
+  background-color: rgba(187, 151, 77, 100);
+  color: #000;
+  transition: all 0.5s;
+}
 
 /* 6. Improve media defaults */
 img,

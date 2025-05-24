@@ -1,0 +1,100 @@
+.about {
+  position: relative;
+  widht: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+.about-container {
+  display: flex;
+  max-width: 75%;
+  margin: 0px auto;
+  padding: 20px 0;
+  position: relative;
+}
+
+.about-container .descricao {
+  width: 600px;
+  height: 100%;
+  line-height: 2;
+}
+.about-container .descricao h1 {
+  font-family: Quando, sans-serif;
+  font-size: 40px;
+  font-weight: bold;
+  color: #fff;
+}
+.about-container .descricao .cargo {
+  fonte-family: Poppins, sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  font-style: italic;
+  margin-top: -20px;
+  margin-bottom: 10px;
+}
+.about-container .descricao p {
+  font-family: Poppins, sans-serif;
+  font-size: 20px;
+  color: #fff;
+  font-weight: 300;
+  white-space: wrap;
+}
+.about-container .conteudo {
+  margin-top: 20px;
+}
+.about-container .conteudo h3 {
+  font-family: Poppins, sans-serif;
+  font-size: 25px;
+  color: #d4a535;
+}
+.about-container .conteudo .qualificacoes {
+  list-style-type: none;
+  font-family: Poppins, sans-serif;
+  font-size: 18px;
+  line-height: 1.3;
+  color: #ffffff;
+  font-weight: 200;
+  font-style: italic;
+}
+.about button {
+  margin-top: 30px;
+}
+.about-img {
+  position: absolute;
+  right: 0;
+}
+
+.qualificacoes li {
+  position: relative;
+  padding-left: 28px;
+  margin-bottom: 12px;
+  opacity: 0;
+  transform: translateX(0px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  font-style: italic;
+}
+
+.qualificacoes li::before {
+  content: "✔";
+  color: #d4af37;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.qualificacoes li.ativo {
+  opacity: 1;
+  transform: translateX(-40px);
+}
+
+.qualificacoes li {
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.about-logo img {
+  position: absolute;
+
+  left: 20;
+  margin-left: 2rem;
+  margin-top: 2rem;
+}

@@ -25,23 +25,10 @@
   color: #bb974d;
 }
 
-.home-text button {
+.home button {
   margin-top: 30px;
-  background-color: rgba(16, 16, 16, 0.7);
-  border: none;
-  width: 200px;
-  height: 50px;
-  color: #bb974d;
-  cursor: pointer;
-  font-family: Quando, sans-serif;
-  border: 1px solid #bb974d;
-  margin-left: 300px;
-}
 
-.home-text button:hover {
-  background-color: rgba(187, 151, 77, 100);
-  color: #000;
-  transition: all 0.5s;
+  margin-left: 300px;
 }
 
 header {
