@@ -1,0 +1,65 @@
+.numeros {
+  width: 100vw;
+  height: 200px;
+  background: linear-gradient(to bottom, #f5f5f5, #ffffff);
+  margin: 2rem 0;
+  /*   background-color: rgba(0, 0, 0, 0.8); */
+}
+
+.numeros-container {
+  max-width: 80%;
+  height: 100%;
+  display: flex;
+  gap: 20rem;
+  margin: 0 auto;
+  color: white;
+  justify-content: center;
+  align-items: center;
+}
+
+.numeros-container h1,
+.numeros-container p {
+  font-family: Poppins, sans-serif;
+  color: rgba(0, 0, 0, 0.8);
+  text-align: center;
+}
+
+.numeros-container h1 {
+  font-size: 5rem;
+  line-height: 1;
+  font-family: "Quando", sans-serif;
+  font-weight: bold;
+}
+
+.numeros-container p {
+  font-size: 20px;
+}
+.numero {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.numero::before {
+  position: absolute;
+  content: "+";
+  width: 2px;
+  color: rgba(0, 0, 0, 0.8);
+  font-size: 30px;
+  left: -20px;
+  vertical-align: super;
+}
+.clientes {
+  transform: translateX(-400px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.anos {
+  transform: translateX(400px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.clientes.ativo,
+.anos.ativo {
+  opacity: 1;
+  transform: translateY(0);
+}

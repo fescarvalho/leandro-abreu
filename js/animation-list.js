@@ -26,6 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
+/* ------------------ */
 document.addEventListener("DOMContentLoaded", function () {
   const cards = document.querySelectorAll(".card");
 
@@ -44,4 +45,67 @@ document.addEventListener("DOMContentLoaded", function () {
   );
 
   cards.forEach((card) => observer.observe(card));
+});
+
+/* ------------------ */
+function animarContador(elemento, duracao = 2000) {
+  const alvo = +elemento.getAttribute("data-target");
+  const inicio = 0;
+  const inicioTempo = performance.now();
+
+  function atualizar(tempoAtual) {
+    const tempoPassado = tempoAtual - inicioTempo;
+    const progresso = Math.min(tempoPassado / duracao, 1);
+    const valorAtual = Math.floor(progresso * (alvo - inicio) + inicio);
+
+    elemento.textContent = valorAtual;
+
+    if (progresso < 1) {
+      requestAnimationFrame(atualizar);
+    } else {
+      elemento.textContent = alvo;
+    }
+  }
+
+  requestAnimationFrame(atualizar);
+}
+
+const contadores = document.querySelectorAll(".numero");
+
+const observer = new IntersectionObserver(
+  (entradas, obs) => {
+    entradas.forEach((entrada) => {
+      if (entrada.isIntersecting) {
+        animarContador(entrada.target);
+        obs.unobserve(entrada.target);
+      }
+    });
+  },
+  {
+    threshold: 0.5,
+  },
+);
+
+contadores.forEach((el) => observer.observe(el));
+
+document.addEventListener("DOMContentLoaded", function () {
+  const clientes = document.querySelectorAll(".clientes");
+  const anos = document.querySelectorAll(".anos");
+
+  const observer = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("ativo");
+          observer.unobserve(entry.target); // Anima só uma vez
+        }
+      });
+    },
+    {
+      threshold: 0.2,
+    },
+  );
+
+  clientes.forEach((clientes) => observer.observe(clientes));
+  anos.forEach((anos) => observer.observe(anos));
 });
