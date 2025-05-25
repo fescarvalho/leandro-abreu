@@ -1,3 +1,32 @@
+/* WHATS */
+document.addEventListener("DOMContentLoaded", function () {
+  const items = document.querySelectorAll(".whats");
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          items.forEach((item, index) => {
+            setTimeout(() => {
+              item.classList.add("ativo");
+            }, index * 150);
+          });
+
+          observer.disconnect();
+        }
+      });
+    },
+    {
+      threshold: 0.3,
+    },
+  );
+
+  const target = document.querySelector(".whats");
+  if (target) {
+    observer.observe(target);
+  }
+});
+
 document.addEventListener("DOMContentLoaded", function () {
   const items = document.querySelectorAll(".qualificacoes li");
 

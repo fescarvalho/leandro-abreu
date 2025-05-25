@@ -1,0 +1,35 @@
+.whats {
+  position: fixed;
+  bottom: 60px;
+  right: 30px;
+  font-size: 30px;
+  background-color: #01e675;
+  color: #fff;
+  border-radius: 50%;
+  padding: 3px;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  text-decoration: none;
+  box-shadow: 1px 1px 1px #c0bdbd;
+  z-index: 1000;
+  transform: translateX(30px);
+  transition: 0.6s ease;
+}
+
+.whats .fab {
+  padding-top: 2px;
+}
+
+.whats:hover {
+  background-color: #fff;
+  color: #029e3b;
+  font-weight: 900;
+  box-shadow: 2px 2px 2px #5fe690;
+  transition: 0.4s ease;
+}
+
+.whats.ativo {
+  opacity: 1;
+  transform: translateX(-30px);
+}

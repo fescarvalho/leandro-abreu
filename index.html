@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Leandro Abreu</title>
     <link rel="stylesheet" href="./css/style.css" />
+    <link rel="icon" type="image/ico" href="./assest/imgs/logo.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -23,15 +24,17 @@
   <body>
     <header>
       <div class="header-logo">
-        <img src="./assest/imgs/logo.svg" alt="Logo Leandro Abreu Contabilidade" />
+        <a href="#index" rel="noopener noreferrer"
+          ><img src="./assest/imgs/logo.svg" alt="Logo Leandro Abreu Contabilidade"
+        /></a>
       </div>
       <nav>
         <ul class="header-list">
-          <li>Serviços</li>
-          <li>Quem somos</li>
-          <li>Onde estamos</li>
-          <li>Comentários</li>
-          <li>Contato</li>
+          <a href="#servico"><li>Serviços</li></a>
+          <a href="#sobre"><li>Sobre</li></a>
+          <a href="#numeros"><li>Numeros</li></a>
+          <a href="#depoimentos"><li>Depoimentos</li></a>
+          <a href="#contato"><li>Contato</li></a>
         </ul>
       </nav>
     </header>
@@ -39,11 +42,17 @@
     <main class="home">
       <div class="home-text">
         <h1>Seu <span>negócio</span>,<br />Nossa <span>responsabilidade</span>.</h1>
-        <a href=""><button class="btn-home" s>Fale Conosco</button></a>
+        <a href="https://wa.me/5522999600843"
+          ><button class="btn-home" s>Fale Conosco</button></a
+        >
       </div>
     </main>
-
-    <section class="service">
+    <div class="footer">
+      <a href="https://wa.me/5522999600843" target="_blank" class="whats"
+        ><i class="fab fa-whatsapp"></i
+      ></a>
+    </div>
+    <section class="service" id="servico">
       <div class="service-container">
         <div class="service-logo">
           <img src="./assest/imgs/logo.svg" alt="Logo Leandro Abreu Contabilidade" />
@@ -108,7 +117,7 @@
       </div>
     </section>
 
-    <section class="about">
+    <section class="about" id="sobre">
       <div class="about-logo">
         <img src="./assest/imgs/logo.svg" alt="Logo Leandro Abreu Contabilidade" />
       </div>
@@ -134,7 +143,9 @@
               <li>Atualização constante sobre legislação fiscal</li>
             </ul>
           </div>
-          <a href="http://"><button class="btn-about">Fale conosco</button></a>
+          <a href="https://wa.me/5522999600843"
+            ><button class="btn-about">Fale conosco</button></a
+          >
         </div>
         <div class="about-img">
           <img src="./assest/imgs/foto.png" alt="" />
@@ -142,17 +153,17 @@
       </div>
     </section>
 
-    <section class="numeros">
+    <section class="numeros" id="numeros">
       <div class="numeros-container">
         <div class="valores clientes">
           <h1>
-            <span class="mais">+</span><span class="numero" data-target="800">0</span>
+            <span class="mais">+</span><span class="numero" data-target="200">0</span>
           </h1>
           <p>clientes</p>
         </div>
         <div class="valores anos">
           <h1>
-            <span class="mais">+</span><span class="numero" data-target="25">0</span>
+            <span class="mais">+</span><span class="numero" data-target="15">0</span>
           </h1>
           <p>anos</p>
         </div>
@@ -172,7 +183,7 @@
       </div>
     </section>
 
-    <section class="depoimentos">
+    <section class="depoimentos" id="depoimentos">
       <div class="dp-logo">
         <img src="./assest/imgs/logo.svg" alt="Logo Leandro Abreu Contabilidade" />
       </div>
@@ -181,6 +192,10 @@
           Mais que contas, <br />
           construímos <span>confiança</span> .
         </h1>
+
+        <p>
+          A voz de quem faz parte da nossa jornada. Histórias reais. Conexões verdadeiras.
+        </p>
       </div>
 
       <div class="carrossel-container">
@@ -191,9 +206,9 @@
               <h3>Margareth Mello</h3>
               <h4>M. Mello</h4>
               <p>
-                ❝ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent congue
-                sem et tellus efficitur, vitae feugiat sapien pretium. Etiam vitae orci
-                bibendum, scelerisque nisl condimentum, dictum sem ❞
+                ❝ Desde que comecei a trabalhar com o Leandro, percebi a diferença que um
+                contador comprometido faz. A equipe é ágil, clara e sempre disposta a
+                ajudar. ❞
               </p>
             </div>
           </div>
@@ -205,9 +220,8 @@
               <h3>Thiago Farias</h3>
               <h4>Thicabi</h4>
               <p>
-                ❝ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent congue
-                sem et tellus efficitur, vitae feugiat sapien pretium. Etiam vitae orci
-                bibendum, scelerisque nisl condimentum, dictum sem ❞
+                ❝ Confio plenamente no trabalho deles. Sempre que tenho dúvidas, recebo
+                suporte rápido e com explicações que realmente entendo. ❞
               </p>
             </div>
           </div>
@@ -217,9 +231,8 @@
               <h3>Froylan Alonso</h3>
               <h4>Digital Net</h4>
               <p>
-                ❝ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent congue
-                sem et tellus efficitur, vitae feugiat sapien pretium. Etiam vitae orci
-                bibendum, scelerisque nisl condimentum, dictum sem ❞
+                ❝ Meu negócio cresceu com muito mais segurança desde que passei a contar
+                com a contabilidade do Leandro. Eles realmente se importam.❞
               </p>
             </div>
           </div>
@@ -229,9 +242,8 @@
               <h3>Maiquiane Boechat</h3>
               <h4>Bamend</h4>
               <p>
-                ❝ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent congue
-                sem et tellus efficitur, vitae feugiat sapien pretium. Etiam vitae orci
-                bibendum, scelerisque nisl condimentum, dictum sem ❞
+                ❝ Organização impecável e atendimento excelente! É muito bom poder focar
+                na empresa sabendo que as obrigações fiscais estão em boas mãos.❞
               </p>
             </div>
           </div>
@@ -241,9 +253,8 @@
               <h3>Pedro Ramos</h3>
               <h4>Unidas Farma</h4>
               <p>
-                ❝ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent congue
-                sem et tellus efficitur, vitae feugiat sapien pretium. Etiam vitae orci
-                bibendum, scelerisque nisl condimentum, dictum sem ❞
+                ❝ Finalmente encontrei um escritório contábil que entrega mais do que
+                números. Eles entregam tranquilidade e parceria de verdade.❞
               </p>
             </div>
           </div>
@@ -253,9 +264,9 @@
               <h3>Nicolas Oliveira</h3>
               <h4>Padaria do Grillo</h4>
               <p>
-                ❝ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent congue
-                sem et tellus efficitur, vitae feugiat sapien pretium. Etiam vitae orci
-                bibendum, scelerisque nisl condimentum, dictum sem ❞
+                ❝ O atendimento personalizado fez toda a diferença. Me senti acolhido
+                desde o primeiro contato. Hoje indico para todos os meus colegas
+                empresários.❞
               </p>
             </div>
           </div>
@@ -265,7 +276,7 @@
       <div class="carrossel-dots"></div>
     </section>
 
-    <section class="contatos">
+    <section class="contatos" id="contato">
       <div class="header-logo">
         <img src="./assest/imgs/logo.svg" alt="Logo Leandro Abreu Contabilidade" />
       </div>
@@ -278,18 +289,28 @@
           atendimento personalizado.
         </p>
         <div class="social-medias">
-          <a href="https://facebook.com" target="_blank" class="icone"
+          <a
+            href="https://www.facebook.com/leandroabreucontabilidade"
+            target="_blank"
+            class="icone"
             ><i class="fab fa-facebook-f"></i
           ></a>
-          <a href="https://instagram.com" target="_blank" class="icone"
+          <a
+            href="https://www.instagram.com/leandroabreucontabilidade"
+            target="_blank"
+            class="icone"
             ><i class="fab fa-instagram"></i
           ></a>
-          <a href="https://wa.me/5511999999999" target="_blank" class="icone"
+          <a href="https://wa.me/5522999600843" target="_blank" class="icone"
             ><i class="fab fa-whatsapp"></i
           ></a>
         </div>
-        <p class="tel">(11) 3456-7890</p>
-        <p class="email">leandrocontabil2010@hotmail.com</p>
+        <p class="tel">(22) 3841-3074</p>
+
+        <a href="mailto:leandrocontabil2010@hotmail.com">
+          <p class="email">leandrocontabil2010@hotmail.com</p></a
+        >
+
         <p>Segunda a Sexta: 8:30h às 18h</p>
       </div>
       <div class="maps-contatos">
