@@ -15,11 +15,15 @@
       href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
   </head>
   <body>
     <header>
       <div class="header-logo">
-        <img src="./assest/imgs/LogoBranco.svg" alt="Logo Leandro Abreu Contabilidade" />
+        <img src="./assest/imgs/logo.svg" alt="Logo Leandro Abreu Contabilidade" />
       </div>
       <nav>
         <ul class="header-list">
@@ -106,7 +110,7 @@
 
     <section class="about">
       <div class="about-logo">
-        <img src="./assest/imgs/LogoBranco.svg" alt="Logo Leandro Abreu Contabilidade" />
+        <img src="./assest/imgs/logo.svg" alt="Logo Leandro Abreu Contabilidade" />
       </div>
       <div class="about-container">
         <div class="descricao">
@@ -123,7 +127,7 @@
             <h3>Qualificações</h3>
             <ul class="qualificacoes">
               <li>Mais de 15 anos de experiência no mercado</li>
-              <li>Especialista em contabilidade tributária</li>
+              <li>Pós Graduado em Coaching/Controladoria/Finanças</li>
               <li>Membro do Conselho Regional de Contabilidade</li>
               <li>MBA em gestão financeira</li>
               <li>Atendimento personalizado para cada cliente</li>
@@ -141,17 +145,35 @@
     <section class="numeros">
       <div class="numeros-container">
         <div class="valores clientes">
-          <h1 class="numero" data-target="800">0</h1>
+          <h1>
+            <span class="mais">+</span><span class="numero" data-target="800">0</span>
+          </h1>
           <p>clientes</p>
         </div>
         <div class="valores anos">
-          <h1 class="numero" data-target="25">0</h1>
+          <h1>
+            <span class="mais">+</span><span class="numero" data-target="25">0</span>
+          </h1>
           <p>anos</p>
+        </div>
+        <div class="valores informatizado">
+          <h1>
+            <span class="numero" data-target="100">0</span><span class="simbolo">%</span>
+          </h1>
+          <p>informatizado</p>
+        </div>
+        <div class="valores satisfacao">
+          <h1>
+            <span class="mais">+</span><span class="numero" data-target="99">0</span
+            ><span class="simbolo">%</span>
+          </h1>
+          <p>de satisfação dos clientes</p>
         </div>
       </div>
     </section>
+
     <section class="depoimentos">
-      <div class="about-logo">
+      <div class="dp-logo">
         <img src="./assest/imgs/logo.svg" alt="Logo Leandro Abreu Contabilidade" />
       </div>
       <div class="dp-text">
@@ -165,72 +187,137 @@
         <div class="carrossel-wrapper">
           <div class="cadsDp">
             <div class="avatar"><img src="./assest/imgs/perfil.png" alt="" /></div>
-            <h3>Margareth Mello</h3>
-            <h4>M. Mello</h4>
-            <p>
-              ❝ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent congue
-              sem et tellus efficitur, vitae feugiat sapien pretium. Etiam vitae orci
-              bibendum, scelerisque nisl condimentum, dictum sem ❞
-            </p>
+            <div class="cadsborder">
+              <h3>Margareth Mello</h3>
+              <h4>M. Mello</h4>
+              <p>
+                ❝ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent congue
+                sem et tellus efficitur, vitae feugiat sapien pretium. Etiam vitae orci
+                bibendum, scelerisque nisl condimentum, dictum sem ❞
+              </p>
+            </div>
           </div>
           <div class="cadsDp">
             <div class="avatar">
               <img src="./assest/imgs/perfil.png" alt="" />
             </div>
-            <h3>Thiago Farias</h3>
-            <h4>Thicabi</h4>
-            <p>
-              ❝ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent congue
-              sem et tellus efficitur, vitae feugiat sapien pretium. Etiam vitae orci
-              bibendum, scelerisque nisl condimentum, dictum sem ❞
-            </p>
+            <div class="cadsborder">
+              <h3>Thiago Farias</h3>
+              <h4>Thicabi</h4>
+              <p>
+                ❝ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent congue
+                sem et tellus efficitur, vitae feugiat sapien pretium. Etiam vitae orci
+                bibendum, scelerisque nisl condimentum, dictum sem ❞
+              </p>
+            </div>
           </div>
           <div class="cadsDp">
             <div class="avatar"><img src="./assest/imgs/perfil.png" alt="" /></div>
-            <h3>Froylan Alonso</h3>
-            <h4>Digital Net</h4>
-            <p>
-              ❝ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent congue
-              sem et tellus efficitur, vitae feugiat sapien pretium. Etiam vitae orci
-              bibendum, scelerisque nisl condimentum, dictum sem ❞
-            </p>
-          </div>
-
-          <div class="cadsDp">
-            <div class="avatar"><img src="./assest/imgs/perfil.png" alt="" /></div>
-            <h3>Maiquiane Boechat</h3>
-            <h4>Bamend</h4>
-            <p>
-              ❝ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent congue
-              sem et tellus efficitur, vitae feugiat sapien pretium. Etiam vitae orci
-              bibendum, scelerisque nisl condimentum, dictum sem ❞
-            </p>
+            <div class="cadsborder">
+              <h3>Froylan Alonso</h3>
+              <h4>Digital Net</h4>
+              <p>
+                ❝ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent congue
+                sem et tellus efficitur, vitae feugiat sapien pretium. Etiam vitae orci
+                bibendum, scelerisque nisl condimentum, dictum sem ❞
+              </p>
+            </div>
           </div>
           <div class="cadsDp">
             <div class="avatar"><img src="./assest/imgs/perfil.png" alt="" /></div>
-            <h3>Pedro Ramos</h3>
-            <h4>Unidas Farma</h4>
-            <p>
-              ❝ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent congue
-              sem et tellus efficitur, vitae feugiat sapien pretium. Etiam vitae orci
-              bibendum, scelerisque nisl condimentum, dictum sem ❞
-            </p>
+            <div class="cadsborder">
+              <h3>Maiquiane Boechat</h3>
+              <h4>Bamend</h4>
+              <p>
+                ❝ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent congue
+                sem et tellus efficitur, vitae feugiat sapien pretium. Etiam vitae orci
+                bibendum, scelerisque nisl condimentum, dictum sem ❞
+              </p>
+            </div>
           </div>
           <div class="cadsDp">
             <div class="avatar"><img src="./assest/imgs/perfil.png" alt="" /></div>
-            <h3>Nicolas Oliveira</h3>
-            <h4>Padaria do Grillo</h4>
-            <p>
-              ❝ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent congue
-              sem et tellus efficitur, vitae feugiat sapien pretium. Etiam vitae orci
-              bibendum, scelerisque nisl condimentum, dictum sem ❞
-            </p>
+            <div class="cadsborder">
+              <h3>Pedro Ramos</h3>
+              <h4>Unidas Farma</h4>
+              <p>
+                ❝ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent congue
+                sem et tellus efficitur, vitae feugiat sapien pretium. Etiam vitae orci
+                bibendum, scelerisque nisl condimentum, dictum sem ❞
+              </p>
+            </div>
+          </div>
+          <div class="cadsDp">
+            <div class="avatar"><img src="./assest/imgs/perfil.png" alt="" /></div>
+            <div class="cadsborder">
+              <h3>Nicolas Oliveira</h3>
+              <h4>Padaria do Grillo</h4>
+              <p>
+                ❝ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent congue
+                sem et tellus efficitur, vitae feugiat sapien pretium. Etiam vitae orci
+                bibendum, scelerisque nisl condimentum, dictum sem ❞
+              </p>
+            </div>
           </div>
         </div>
       </div>
 
       <div class="carrossel-dots"></div>
     </section>
+
+    <section class="contatos">
+      <div class="header-logo">
+        <img src="./assest/imgs/logo.svg" alt="Logo Leandro Abreu Contabilidade" />
+      </div>
+      <div class="content-contatos">
+        <h3>Leandro Abreu Contabilidade</h3>
+        <p>
+          Oferecemos soluções contábeis <br />
+          personalizadas para empresas de todos os portes,<br />
+          com foco em qualidade, precisão e <br />
+          atendimento personalizado.
+        </p>
+        <div class="social-medias">
+          <a href="https://facebook.com" target="_blank" class="icone"
+            ><i class="fab fa-facebook-f"></i
+          ></a>
+          <a href="https://instagram.com" target="_blank" class="icone"
+            ><i class="fab fa-instagram"></i
+          ></a>
+          <a href="https://wa.me/5511999999999" target="_blank" class="icone"
+            ><i class="fab fa-whatsapp"></i
+          ></a>
+        </div>
+        <p class="tel">(11) 3456-7890</p>
+        <p class="email">leandrocontabil2010@hotmail.com</p>
+        <p>Segunda a Sexta: 8:30h às 18h</p>
+      </div>
+      <div class="maps-contatos">
+        <h3>Como <span>voce pode</span> <br />chegar ate <span>nós</span>?</h3>
+        <p>R. Dr. Raul Travassos, 3 - loja 2 - Centro Natividade - RJ,</p>
+
+        <div class="mapa">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.7260930547063!2d-41.97744742385679!3d-21.04364297395341!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xbc891a66deeb77%3A0x194d2c5228443ca3!2sLeandro%20Abreu%20Contabilidade!5e0!3m2!1spt-BR!2sbr!4v1748122867903!5m2!1spt-BR!2sbr"
+            width="450"
+            height="250"
+            style="border: 0"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+      </div>
+    </section>
+    <footer>
+      <div class="corp">
+        <p>
+          &copy;2025. Desenvolvido por
+          <a href="https://www.fescarv.tech/" target="_blank">Fernando Carvalho</a>. Todos
+          os direitos reservados.
+        </p>
+      </div>
+    </footer>
 
     <script src="./js/animation-list.js"></script>
   </body>

@@ -93,6 +93,8 @@ contadores.forEach((el) => observer.observe(el));
 document.addEventListener("DOMContentLoaded", function () {
   const clientes = document.querySelectorAll(".clientes");
   const anos = document.querySelectorAll(".anos");
+  const informatizado = document.querySelectorAll(".informatizado");
+  const satisfacao = document.querySelectorAll(".satisfacao");
 
   const observer = new IntersectionObserver(
     (entries, observer) => {
@@ -110,6 +112,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   clientes.forEach((clientes) => observer.observe(clientes));
   anos.forEach((anos) => observer.observe(anos));
+  informatizado.forEach((informatizado) => observer.observe(informatizado));
+  satisfacao.forEach((satisfacao) => observer.observe(satisfacao));
 });
 
 /* Depoimentos */
