@@ -329,6 +329,106 @@ ul { list-style: none; }
     text-transform: uppercase;
     letter-spacing: 2px;
 }
+
+/* --- SEÇÃO DE DEPOIMENTOS (Correção Flexbox) --- */
+.testimonials {
+    background-color: #050505;
+    padding: 100px 0;
+    border-bottom: 1px solid #222;
+}
+
+.testimonials .section-title { color: var(--white); }
+.testimonials .section-subtitle { color: #888; margin-bottom: 60px; }
+
+/* MUDANÇA: Flexbox para alinhamento perfeito */
+.testimonials-grid {
+    display: flex;
+    justify-content: center; /* Centraliza tudo */
+    gap: 30px;
+    flex-wrap: wrap; /* Permite quebrar linha se a tela for pequena */
+}
+
+/* Card do Depoimento */
+.testimonial-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 40px 30px;
+    border-radius: 12px;
+    
+    /* Tamanho Fixo para ficarem iguais */
+    flex: 1;
+    min-width: 300px; /* Tamanho mínimo para não esmagar */
+    max-width: 380px; /* Tamanho máximo para não esticar demais */
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+    transition: all 0.3s ease;
+    
+    /* SEGURANÇA: Garante que sejam visíveis se o JS falhar */
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.testimonial-card:hover {
+    transform: translateY(-10px);
+    background: rgba(255, 255, 255, 0.05);
+    border-color: var(--gold);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+/* Ícone de Aspas */
+.quote-icon {
+    font-size: 2rem;
+    color: var(--gold);
+    opacity: 0.5;
+    margin-bottom: 20px;
+}
+
+/* Texto do Depoimento */
+.testimonial-text {
+    font-style: italic;
+    color: #e0e0e0; /* Texto mais claro para leitura */
+    line-height: 1.6;
+    margin-bottom: 30px;
+    font-size: 0.95rem;
+}
+
+/* Informações do Cliente */
+.client-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+    border-top: 1px solid rgba(255,255,255,0.1); /* Linha separadora sutil */
+    padding-top: 20px;
+}
+
+.client-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid var(--gold);
+    object-fit: cover;
+}
+
+.client-info h4 {
+    color: var(--white);
+    font-size: 1rem;
+    margin-bottom: 2px;
+}
+
+.client-info span {
+    color: var(--gold);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.stars { color: var(--gold); font-size: 0.9rem; }
+
 /* --- Useful Links (Dark Section) --- */
 .useful-links {
     background-color: var(--dark-grey);
@@ -512,5 +612,12 @@ footer {
         border-left: none; /* Remove borda lateral */
         border-bottom: 3px solid var(--gold); /* Coloca borda embaixo */
         padding-bottom: 30px;
+    }
+}
+
+/* Responsividade */
+@media screen and (max-width: 768px) {
+    .testimonial-card {
+        min-width: 100%; /* No celular ocupa a largura toda */
     }
 }

@@ -106,3 +106,21 @@ gsap.fromTo(".stat-card",
         }
     }
 );
+
+// Animação Depoimentos (Blindada)
+gsap.fromTo(".testimonial-card", 
+    { 
+        y: 50, 
+        opacity: 0 
+    },
+    {
+        y: 0,
+        opacity: 1,
+        duration: 0.8,
+        stagger: 0.2,
+        scrollTrigger: {
+            trigger: ".testimonials",
+            start: "top 80%", // Começa quando a seção entra na tela
+        }
+    }
+);
