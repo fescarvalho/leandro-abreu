@@ -652,15 +652,184 @@ ul { list-style: none; }
     outline: none;
     border-color: var(--gold);
 }
-
-/* --- Footer --- */
+/* --- FOOTER EXECUTIVO COM MAPA --- */
 footer {
-    background: var(--black);
-    color: #555;
-    text-align: center;
-    padding: 20px 0;
-    border-top: 1px solid #222;
+    background-color: #050505; /* Preto Profundo */
+    color: #aeaeae;
+    padding-top: 80px;
+    border-top: 3px solid var(--gold); /* Linha dourada no topo */
+    font-size: 0.95rem;
 }
+
+.footer-container {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr 1.5fr; /* Colunas com larguras diferentes */
+    gap: 50px;
+    padding-bottom: 60px;
+}
+
+/* Títulos das Colunas */
+.footer-col h3 {
+    color: var(--white);
+    font-size: 1.2rem;
+    margin-bottom: 25px;
+    position: relative;
+    display: inline-block;
+}
+
+/* Detalhe dourado embaixo do título */
+.footer-col h3::after {
+    content: '';
+    display: block;
+    width: 30px;
+    height: 2px;
+    background: var(--gold);
+    margin-top: 8px;
+}
+
+/* Logo e Texto */
+.footer-logo {
+    height: 50px;
+    margin-bottom: 20px;
+    filter: brightness(0) invert(1); /* Deixa a logo branca se for preta */
+}
+
+/* Links Sociais */
+.social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.social-links a {
+    width: 40px;
+    height: 40px;
+    background: rgba(255,255,255,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: var(--gold);
+    transition: 0.3s;
+}
+
+.social-links a:hover {
+    background: var(--gold);
+    color: var(--black);
+    transform: translateY(-3px);
+}
+
+/* Lista de Links */
+.footer-col ul li {
+    margin-bottom: 12px;
+}
+
+.footer-col ul li a:hover {
+    color: var(--gold);
+    padding-left: 5px; /* Efeito de deslizar */
+}
+
+/* --- ÁREA DE LOCALIZAÇÃO E MAPA --- */
+.address-box {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    align-items: flex-start;
+}
+
+.icon-gold {
+    color: var(--gold);
+    font-size: 1.2rem;
+    margin-top: 4px;
+}
+
+/* Container do Mapa (com truque de overlay) */
+.map-container {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #333;
+    margin-bottom: 15px;
+    height: 150px;
+}
+
+.map-container iframe {
+    filter: grayscale(100%) invert(90%); /* Deixa o mapa escuro/dark mode */
+    opacity: 0.7;
+    transition: 0.3s;
+}
+
+/* Overlay que aparece ao passar o mouse */
+.map-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: 0.3s;
+    text-decoration: none;
+}
+
+.map-overlay span {
+    background: var(--gold);
+    color: var(--black);
+    padding: 8px 15px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.map-container:hover .map-overlay { opacity: 1; }
+.map-container:hover iframe { opacity: 0.4; }
+
+/* Botões Waze e Maps */
+.map-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-map {
+    flex: 1;
+    padding: 10px;
+    text-align: center;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: 0.3s;
+}
+
+.btn-map.google {
+    background: #333;
+    color: var(--white);
+    border: 1px solid #444;
+}
+
+.btn-map.google:hover { background: #4285F4; border-color: #4285F4; }
+
+.btn-map.waze {
+    background: #333;
+    color: var(--white);
+    border: 1px solid #444;
+}
+
+.btn-map.waze:hover { background: #33ccff; border-color: #33ccff; color: #000; }
+
+/* Rodapé Final */
+.footer-bottom {
+    background: #000;
+    text-align: center;
+    padding: 20px;
+    border-top: 1px solid #111;
+    margin-top: auto;
+}
+
+
 
 /* --- Botão WhatsApp Flutuante --- */
 .whatsapp-btn {
@@ -790,4 +959,16 @@ footer {
         width: 45%; /* Ocupa quase metade da tela cada um */
         min-width: auto;
     }
+}
+/* Responsividade */
+@media screen and (max-width: 900px) {
+    .footer-container {
+        grid-template-columns: 1fr; /* Tudo em 1 coluna no celular */
+        text-align: center;
+        gap: 40px;
+    }
+
+    .footer-col h3::after { margin: 8px auto 0; } /* Centraliza o tracinho */
+    .social-links { justify-content: center; }
+    .address-box { justify-content: center; text-align: left; }
 }
