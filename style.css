@@ -1,0 +1,316 @@
+/* --- Variáveis e Reset --- */
+:root {
+    --gold: #C5A059; /* Tom dourado executivo (ajustável) */
+    --gold-light: #dcc186;
+    --black: #0a0a0a;
+    --dark-grey: #1c1c1c;
+    --white: #ffffff;
+    --text-grey: #cccccc;
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Poppins', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--white);
+    color: var(--black);
+    overflow-x: hidden;
+}
+
+a { text-decoration: none; color: inherit; transition: 0.3s; }
+ul { list-style: none; }
+
+/* --- Utilitários --- */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    border-radius: 4px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    border: none;
+}
+
+.btn-gold {
+    background-color: var(--gold);
+    color: var(--black);
+}
+
+.btn-gold:hover {
+    background-color: var(--gold-light);
+    transform: translateY(-2px);
+}
+
+.btn-dark {
+    background-color: var(--black);
+    color: var(--gold);
+    border: 1px solid var(--gold);
+}
+
+.btn-dark:hover {
+    background-color: var(--gold);
+    color: var(--black);
+}
+
+.section { padding: 80px 0; }
+
+.section-title {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 50px;
+    color: var(--black);
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: var(--gold);
+    margin: 10px auto 0;
+}
+
+/* --- Navbar --- */
+.navbar {
+    background-color: var(--black);
+    height: 80px;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.logo img {
+    height: 60px; /* Ajuste conforme necessário */
+    width: auto;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: var(--white);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.nav-links a:hover { color: var(--gold); }
+
+/* Menu Mobile (Burger) */
+.burger { display: none; cursor: pointer; }
+.burger div {
+    width: 25px; height: 3px; background-color: var(--gold); margin: 5px; transition: all 0.3s ease;
+}
+
+/* --- Hero Section --- */
+/* --- Hero Section & Carrossel --- */
+.hero {
+    height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden; /* Impede scroll horizontal indesejado */
+}
+
+/* Configuração do Swiper para ocupar todo o fundo */
+.swiper {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1; /* Fica atrás de tudo */
+}
+
+.swiper-slide {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+/* A Overlay precisa ficar EM CIMA do slider, mas EMBAIXO do texto */
+.hero-overlay {
+    position: absolute;
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,0.5));
+    z-index: 2; 
+}
+
+/* O conteúdo (texto) fica na frente de tudo */
+.hero-content {
+    position: relative;
+    z-index: 3;
+    color: var(--white);
+}
+
+/* (Mantenha os estilos de H1 e P que já estavam lá) */
+.hero h1 {
+    font-family: var(--font-heading);
+    font-size: 4rem;
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+/* ... resto dos estilos de texto ... */
+
+/* --- Services --- */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.card {
+    padding: 30px;
+    border: 1px solid #eee;
+    transition: 0.3s;
+    background: white;
+}
+
+.card:hover {
+    border-color: var(--gold);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transform: translateY(-5px);
+}
+
+.card h3 {
+    margin-bottom: 15px;
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+}
+
+/* --- Useful Links (Dark Section) --- */
+.useful-links {
+    background-color: var(--dark-grey);
+    color: var(--white);
+}
+
+.text-white { color: var(--white); }
+.section-subtitle { text-align: center; color: var(--gold); margin-bottom: 40px; margin-top: -30px; }
+
+.links-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.link-card {
+    background: var(--black);
+    padding: 30px;
+    text-align: center;
+    border: 1px solid #333;
+    border-radius: 8px;
+    display: block;
+}
+
+.link-card:hover {
+    border-color: var(--gold);
+    background: #151515;
+}
+
+.link-card .icon { font-size: 2rem; margin-bottom: 15px; }
+
+.link-card h3 { color: var(--gold); margin-bottom: 5px; font-size: 1.2rem; }
+.link-card p { color: #888; font-size: 0.9rem; }
+
+/* --- Contact --- */
+.contact-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+}
+
+.align-left { text-align: left; }
+.align-left::after { margin: 10px 0 0; }
+
+.contact-info ul li { margin-bottom: 15px; font-size: 1.1rem; }
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact-form input, .contact-form textarea {
+    padding: 15px;
+    border: 1px solid #ccc;
+    font-family: var(--font-body);
+}
+
+.contact-form input:focus, .contact-form textarea:focus {
+    outline: none;
+    border-color: var(--gold);
+}
+
+/* --- Footer --- */
+footer {
+    background: var(--black);
+    color: #555;
+    text-align: center;
+    padding: 20px 0;
+    border-top: 1px solid #222;
+}
+
+/* --- Responsive Mobile --- */
+@media screen and (max-width: 768px) {
+    .nav-links {
+        position: absolute;
+        right: 0px;
+        height: 92vh;
+        top: 80px;
+        background-color: var(--black);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 50%;
+        transform: translateX(100%);
+        transition: transform 0.5s ease-in;
+        justify-content: space-around;
+        padding-bottom: 50px;
+    }
+
+    .nav-links li { opacity: 0; }
+    .burger { display: block; }
+
+    .nav-active { transform: translateX(0%); }
+
+    /* Animação Links Fade */
+    @keyframes navLinkFade {
+        from { opacity: 0; transform: translateX(50px); }
+        to { opacity: 1; transform: translateX(0px); }
+    }
+
+    .hero h1 { font-size: 2.5rem; }
+    .contact-container { grid-template-columns: 1fr; }
+}

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Leandro Abreu Contabilidade - Soluções contábeis de excelência.">
+    <title>Leandro Abreu Contabilidade</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="style.css">
+    
+    <link rel="shortcut icon" href="./logo.png" type="image/x-icon">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="container nav-container">
+            <div class="logo">
+                <img src="./logo.png" alt="Leandro Abreu Contabilidade Logo">
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Início</a></li>
+                <li><a href="#servicos">Serviços</a></li>
+                <li><a href="#links-uteis">Links Úteis</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </div>
+    </nav>
+
+    <header id="home" class="hero">
+    
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide" style="background-image: url('https://images.unsplash.com/photo-1554224154-26032ffc0d07?q=80&w=1126&auto=format&fit=crop');"></div>
+                
+                <div class="swiper-slide" style="background-image: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1170&auto=format&fit=crop');"></div>
+                
+                <div class="swiper-slide" style="background-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1115&auto=format&fit=crop');"></div>
+            </div>
+        </div>
+    
+        <div class="hero-overlay"></div>
+    
+        <div class="container hero-content">
+            <h1 class="gsap-hero">Excelência e Precisão <br><span>Contábil</span></h1>
+            <p class="gsap-hero">Transformando números em estratégias de crescimento para o seu negócio.</p>
+            <div class="gsap-hero">
+                <a href="#contato" class="btn btn-gold">Fale Conosco</a>
+            </div>
+        </div>
+    </header>
+
+    <section id="servicos" class="section services">
+        <div class="container">
+            <h2 class="section-title">Nossos Serviços</h2>
+            <div class="services-grid">
+                <div class="card service-card">
+                    <h3>Consultoria Tributária</h3>
+                    <p>Planejamento estratégico para redução legal da carga tributária da sua empresa.</p>
+                </div>
+                <div class="card service-card">
+                    <h3>Gestão Financeira</h3>
+                    <p>BPO Financeiro e organização completa das finanças corporativas.</p>
+                </div>
+                <div class="card service-card">
+                    <h3>Abertura de Empresas</h3>
+                    <p>Agilidade e burocracia zero para você começar o seu negócio do jeito certo.</p>
+                </div>
+                <div class="card service-card">
+                    <h3>Departamento Pessoal</h3>
+                    <p>Gestão completa de folha de pagamento, eSocial e benefícios.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="links-uteis" class="section useful-links">
+        <div class="container">
+            <h2 class="section-title text-white">Links Rápidos & Úteis</h2>
+            <p class="section-subtitle">Acesso direto aos principais portais governamentais.</p>
+            
+            <div class="links-grid">
+                <a href="https://cav.receita.fazenda.gov.br/" target="_blank" class="link-card">
+                    <div class="icon">🏛️</div>
+                    <h3>Portal e-CAC</h3>
+                    <p>Receita Federal</p>
+                </a>
+                <a href="https://www8.receita.fazenda.gov.br/SimplesNacional/" target="_blank" class="link-card">
+                    <div class="icon">📊</div>
+                    <h3>Simples Nacional</h3>
+                    <p>Emissão de DAS</p>
+                </a>
+                <a href="https://meu.inss.gov.br/" target="_blank" class="link-card">
+                    <div class="icon">👤</div>
+                    <h3>Meu INSS</h3>
+                    <p>Previdência Social</p>
+                </a>
+                <a href="https://www.regularize.pgfn.gov.br/" target="_blank" class="link-card">
+                    <div class="icon">⚖️</div>
+                    <h3>Regularize</h3>
+                    <p>PGFN</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="contato" class="section contact">
+        <div class="container contact-container">
+            <div class="contact-info">
+                <h2 class="section-title align-left">Entre em Contato</h2>
+                <p>Estamos prontos para atender sua empresa com a seriedade que ela merece.</p>
+                <ul>
+                    <li><strong>📍 Endereço:</strong> Seu Endereço Comercial, Nº 000</li>
+                    <li><strong>📞 Telefone:</strong> (00) 99999-9999</li>
+                    <li><strong>📧 Email:</strong> contato@leandroabreu.com.br</li>
+                </ul>
+            </div>
+            <form class="contact-form">
+                <input type="text" placeholder="Seu Nome" required>
+                <input type="email" placeholder="Seu E-mail" required>
+                <textarea rows="5" placeholder="Sua Mensagem"></textarea>
+                <button type="submit" class="btn btn-dark">Enviar Mensagem</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Leandro Abreu Contabilidade. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
