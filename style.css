@@ -111,6 +111,7 @@ ul { list-style: none; }
 
 .nav-links {
     display: flex;
+    align-items: center;
     gap: 30px;
 }
 
@@ -122,6 +123,46 @@ ul { list-style: none; }
 }
 
 .nav-links a:hover { color: var(--gold); }
+
+/* --- Botão de Destaque no Menu (Área do Cliente) --- */
+.nav-links .btn-cliente {
+    background-color: var(--gold); /* Fundo Dourado */
+    color: var(--black) !important; /* Texto Preto (para leitura) */
+    padding: 10px 20px; /* Espaçamento interno para virar botão */
+    border-radius: 4px; /* Cantos arredondados */
+    font-weight: 700; /* Negrito */
+    border: 1px solid var(--gold);
+    transition: all 0.3s ease;
+    display: inline-flex; /* Alinha ícone e texto */
+    align-items: center;
+    gap: 8px; /* Espaço entre cadeado e texto */
+}
+
+/* Efeito ao passar o mouse */
+.nav-links .btn-cliente:hover {
+    background-color: var(--white); /* Vira Branco */
+    border-color: var(--white);
+    color: var(--black) !important;
+    transform: translateY(-2px); /* Sobe um pouquinho */
+    box-shadow: 0 0 15px rgba(197, 160, 89, 0.6); /* Brilho Neon Dourado */
+}
+
+/* Ajuste para Mobile (para não ficar gigante no menu do celular) */
+@media screen and (max-width: 768px) {
+    .nav-links .btn-cliente {
+        background-color: transparent;
+        color: var(--gold) !important;
+        border: 1px solid var(--gold);
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .nav-links .btn-cliente:hover {
+        background-color: var(--gold);
+        color: var(--black) !important;
+    }
+}
+
 
 /* Menu Mobile (Burger) */
 .burger { display: none; cursor: pointer; }
