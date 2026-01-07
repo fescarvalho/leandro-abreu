@@ -1,24 +1,35 @@
 // Registra o plugin ScrollTrigger
 gsap.registerPlugin(ScrollTrigger);
+// 1. Força o navegador a esquecer a posição do scroll ao recarregar
+if (history.scrollRestoration) {
+    history.scrollRestoration = "manual";
+}
+
+// 2. Garante que o scroll vá para o topo assim que a página abrir
+window.onbeforeunload = function () {
+    window.scrollTo(0, 0);
+};
+
 
 // --- PRELOADER (Animação de Saída) ---
 // Espera o site carregar tudo (imagens, scripts, etc)
 window.addEventListener("load", () => {
-    const tlLoader = gsap.timeline({ delay: 0.5 }); // Pequeno delay inicial
+    // GARANTIA EXTRA: Joga para o topo antes de animar
+    window.scrollTo(0, 0);
 
-    // Apenas sobe a cortina preta, revelando o site
+    const tlLoader = gsap.timeline({ delay: 0.5 });
+
     tlLoader.to("#preloader", {
-        y: "-100%",        // Move para cima
-        duration: 2.5,     // Um pouco mais lento para ser elegante
-        ease: "power4.inOut" // Efeito suave
+        y: "-100%",
+        duration: 1.2,
+        ease: "power4.inOut"
     })
-    // Anima o texto da Hero logo em seguida
     .from(".hero-content", {
         y: 50,
         opacity: 0,
         duration: 1,
         ease: "power3.out"
-    }, "-=0.8"); // Começa bem antes do preloader terminar de subir
+    }, "-=0.8");
 });
 
 // 1. Menu Mobile (Burger)
@@ -95,17 +106,24 @@ if (cards.length > 0) {
 }
 
 // Animação Links Úteis
-gsap.from(".link-card", {
-    scrollTrigger: {
-        trigger: ".useful-links",
-        start: "top 80%",
+// Animação Links Úteis (Blindada)
+gsap.fromTo(".link-card", 
+    { 
+        scale: 0.8, 
+        opacity: 0 
     },
-    scale: 0.8,
-    opacity: 0,
-    duration: 0.6,
-    stagger: 0.15,
-    ease: "back.out(1.7)"
-});
+    {
+        scale: 1,
+        opacity: 1,
+        duration: 0.5,
+        stagger: 0.1, // Um aparece logo após o outro rapidinho
+        scrollTrigger: {
+            trigger: ".useful-links",
+            start: "top 85%", // Começa quando a seção estiver quase toda na tela
+        },
+        ease: "back.out(1.7)" // Efeito de "pulo" ao aparecer
+    }
+);
 
 // Animação da Barra de Estatísticas
 // Animação Stats (Correção de Alinhamento)

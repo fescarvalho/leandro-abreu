@@ -295,8 +295,16 @@ ul { list-style: none; }
 }
 
 /* Títulos da seção em branco */
+/* Títulos da seção em branco */
 .services .section-title { color: var(--white); }
-.services .section-subtitle { color: #888; }
+
+.services .section-subtitle { 
+    color: #888; 
+    text-align: center; /* ADICIONE ISSO AQUI */
+    display: block;     /* Garante que ocupe a linha toda */
+    width: 100%;        /* Força a largura total para centralizar */
+    margin-bottom: 40px; /* Ajuste o espaçamento se precisar */
+}
 
 .services-grid {
     display: grid;
@@ -433,6 +441,7 @@ ul { list-style: none; }
     background-color: #050505;
     padding: 100px 0;
     border-bottom: 1px solid #222;
+    text-align: center
 }
 
 .testimonials .section-title { color: var(--white); }
@@ -452,7 +461,7 @@ ul { list-style: none; }
     border: 1px solid rgba(255, 255, 255, 0.1);
     padding: 40px 30px;
     border-radius: 12px;
-    
+ 
     /* Tamanho Fixo para ficarem iguais */
     flex: 1;
     min-width: 300px; /* Tamanho mínimo para não esmagar */
@@ -491,8 +500,11 @@ ul { list-style: none; }
     line-height: 1.6;
     margin-bottom: 30px;
     font-size: 0.95rem;
+    
 }
-
+.depoimentos .container .section-subtitle {
+    text-align: center;
+}
 /* Informações do Cliente */
 .client-info {
     display: flex;
@@ -527,39 +539,83 @@ ul { list-style: none; }
 
 .stars { color: var(--gold); font-size: 0.9rem; }
 
-/* --- Useful Links (Dark Section) --- */
+/* --- Links Úteis (Correção e Visual Dark) --- */
 .useful-links {
-    background-color: var(--dark-grey);
+    background-color: #111; /* Cinza bem escuro para diferenciar do preto total */
+    padding: 80px 0;
     color: var(--white);
+    border-top: 1px solid #222;
 }
 
-.text-white { color: var(--white); }
-.section-subtitle { text-align: center; color: var(--gold); margin-bottom: 40px; margin-top: -30px; }
+.useful-links .section-title { color: var(--white); }
+.useful-links .section-subtitle { 
+    text-align: center; 
+    color: #888; 
+    margin-bottom: 50px; 
+    margin-top: -30px; 
+}
 
+/* GRID FLEXÍVEL (Centraliza perfeitamente) */
 .links-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Centraliza na tela */
     gap: 20px;
 }
 
 .link-card {
     background: var(--black);
-    padding: 30px;
+    padding: 30px 20px;
     text-align: center;
     border: 1px solid #333;
     border-radius: 8px;
-    display: block;
+    
+    /* Tamanho controlado */
+    width: 250px;
+    flex-grow: 1; /* Cresce se necessário */
+    max-width: 300px; /* Não deixa ficar gigante */
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    
+    /* SEGURANÇA: Garante que apareça mesmo sem JS */
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .link-card:hover {
     border-color: var(--gold);
     background: #151515;
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
-.link-card .icon { font-size: 2rem; margin-bottom: 15px; }
+.link-card .icon { 
+    font-size: 2rem; 
+    color: #555; /* Ícone cinza inicialmente */
+    margin-bottom: 15px; 
+    transition: 0.3s;
+}
 
-.link-card h3 { color: var(--gold); margin-bottom: 5px; font-size: 1.2rem; }
-.link-card p { color: #888; font-size: 0.9rem; }
+.link-card:hover .icon {
+    color: var(--gold); /* Ícone fica dourado no hover */
+    transform: scale(1.1);
+}
+
+.link-card h3 { 
+    color: var(--gold); 
+    margin-bottom: 8px; 
+    font-size: 1.1rem; 
+    font-weight: 600;
+}
+
+.link-card p { 
+    color: #999; 
+    font-size: 0.85rem; 
+}
 
 /* --- Contact --- */
 .contact-container {
