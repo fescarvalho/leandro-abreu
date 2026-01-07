@@ -184,80 +184,108 @@ ul { list-style: none; }
 }
 /* ... resto dos estilos de texto ... */
 
-/* --- Services --- */
+
+
+/* --- SEÇÃO DE SERVIÇOS (Fundo Preto Obrigatório) --- */
 .services {
-    background-color: #f9f9f9; /* Fundo levemente cinza para destacar os cards brancos */
+    /* Isso garante que a seção inteira tenha fundo escuro */
+    background-color: #0a0a0a; 
+    background-image: radial-gradient(circle at center, #1a1a1a 0%, #000000 100%);
+    color: var(--white);
+    padding: 100px 0;
+    position: relative;
 }
+
+/* Títulos da seção em branco */
+.services .section-title { color: var(--white); }
+.services .section-subtitle { color: #888; }
+
 .services-grid {
     display: grid;
-    /* No Desktop: Cria exatamente 3 colunas de larguras iguais */
-    grid-template-columns: repeat(3, 1fr); 
-    gap: 30px; /* Espaço entre os cards */
-    margin-top: 40px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 60px;
 }
+
+/* --- CARD ESTILO GLASS (Dark) --- */
 .service-card {
-    background: var(--white);
-    padding: 40px 30px;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px; /* Bordas levemente arredondadas */
+    /* O SEGREDO ESTÁ AQUI: Fundo quase transparente, NÃO BRANCO */
+    background: rgba(255, 255, 255, 0.03); 
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Borda cinza sutil */
+    
+    /* Forçando o texto a ser branco/cinza claro */
+    color: #cccccc; 
+    
+    padding: 50px 30px;
+    border-radius: 12px;
+    text-align: center;
     transition: all 0.4s ease;
-    position: relative;
-    overflow: hidden;
-    z-index: 1;
-    opacity: 1; /* Garante que ele seja visível por padrão */
-    transform: translateY(0); /* Garante posição correta */
-    background-color: var(--white); /* Força o fundo branco */
+    
+    /* Garante que o card apareça */
+    opacity: 1; 
+    transform: translateY(0);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
 }
 
-/* Efeito de Borda Dourada Inferior (inicialmente invisível ou pequena) */
-.service-card::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0%;
-    height: 4px;
-    background-color: var(--gold);
-    transition: width 0.4s ease;
-}
-
-/* Hover no Card */
+/* --- HOVER (Quando passa o mouse) --- */
 .service-card:hover {
-    transform: translateY(-10px); /* Sobe o card */
-    box-shadow: 0 15px 30px rgba(0,0,0,0.1); /* Sombra suave */
-    border-color: transparent;
+    /* Fundo fica levemente dourado/claro */
+    background: rgba(197, 160, 89, 0.08); 
+    border-color: var(--gold);
+    transform: translateY(-10px);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
 }
 
-.service-card:hover::after {
-    width: 100%; /* A barra dourada preenche a parte de baixo */
-}
+/* --- ELEMENTOS DENTRO DO CARD --- */
 
 /* Ícone */
 .icon-box {
-    font-size: 2.5rem;
-    color: var(--black);
+    font-size: 3.5rem;
+    color: var(--gold);
     margin-bottom: 25px;
     transition: 0.4s;
-    display: inline-block;
 }
 
-.service-card:hover .icon-box {
-    color: var(--gold); /* Ícone fica dourado no hover */
-    transform: scale(1.1);
-}
-
-/* Títulos e Textos */
+/* Título do Serviço */
 .service-card h3 {
-    margin-bottom: 15px;
-    font-family: var(--font-heading);
-    font-size: 1.5rem;
-    color: var(--black);
+    color: var(--white); /* Título sempre branco */
+    font-size: 1.3rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    position: relative;
 }
 
+/* Tracinho embaixo do título */
+.service-card h3::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 3px;
+    background-color: var(--gold);
+    margin: 15px auto 0;
+    transition: width 0.3s;
+}
+
+.service-card:hover h3::after { width: 80px; }
+
+/* Texto do parágrafo */
 .service-card p {
-    color: #666;
-    line-height: 1.6;
+    color: #a0a0a0;
     font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* --- Responsividade --- */
+@media screen and (max-width: 992px) {
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media screen and (max-width: 600px) {
+    .services-grid { grid-template-columns: 1fr; }
 }
 /* --- Useful Links (Dark Section) --- */
 .useful-links {
@@ -362,31 +390,4 @@ footer {
 
     .hero h1 { font-size: 2.5rem; }
     .contact-container { grid-template-columns: 1fr; }
-}
-/* Responsividade: No celular/tablet (telas menores que 992px), muda para 2 ou 1 coluna */
-@media screen and (max-width: 992px) {
-    .services-grid {
-        grid-template-columns: repeat(2, 1fr); /* 2 colunas em tablets */
-    }
-}
-
-@media screen and (max-width: 600px) {
-    .services-grid {
-        grid-template-columns: 1fr; /* 1 coluna no celular */
-    }
-}
-
-.service-card {
-    background: var(--white);
-    padding: 40px 30px;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    transition: all 0.4s ease;
-    position: relative;
-    overflow: hidden;
-    z-index: 1;
-    display: flex;       /* Garante que o conteúdo alinhe internamente */
-    flex-direction: column;
-    justify-content: flex-start;
-    height: 100%;        /* Força todos os cards a terem a mesma altura */
 }
