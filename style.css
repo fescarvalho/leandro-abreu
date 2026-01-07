@@ -9,18 +9,28 @@
     --font-heading: 'Playfair Display', serif;
     --font-body: 'Poppins', sans-serif;
 }
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+html, body {
+    width: 100%;
+    overflow-x: hidden; /* OBRIGATÓRIO: Corta tudo que vazar lateralmente */
+    position: relative; /* Ajuda a conter elementos absolutos */
+}
+
 body {
     font-family: var(--font-body);
     background-color: var(--white);
     color: var(--black);
-    overflow-x: hidden;
+}
+
+/* SEGURANÇA: Impede que imagens ou mapas estourem o tamanho do container */
+img, iframe, video {
+    max-width: 100%;
+    height: auto;
 }
 
 a { text-decoration: none; color: inherit; transition: 0.3s; }
@@ -85,62 +95,56 @@ ul { list-style: none; }
     margin: 10px auto 0;
 }
 
-/* --- PRELOADER (Círculo Giratório Dourado) --- */
+/* --- PRELOADER (Correção Mobile) --- */
 #preloader {
     position: fixed;
-    top: 0;
-    left: 0;
+    top: 0; left: 0; right: 0; bottom: 0;
+    
+    /* MUDANÇA AQUI: De 100vw/100vh para 100% */
     width: 100%;
     height: 100%;
-    background-color: #000000; /* Fundo Preto Puro */
+    
+    background-color: #000000;
     z-index: 99999;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-/* Container que segura o círculo e a logo */
+/* (Mantenha o resto das animações igual...) */
 .logo-circle-wrapper {
     position: relative;
-    width: 180px;  /* Tamanho total do círculo */
+    width: 180px;
     height: 180px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-/* A Logo no centro */
 .preloader-logo {
-    width: 100px; /* Logo um pouco menor que o círculo */
+    width: 100px;
     height: auto;
     position: relative;
-    z-index: 2; /* Garante que a logo fique na frente do círculo */
+    z-index: 2;
 }
 
-/* O Círculo Dourado Giratório (Feito com ::before) */
 .logo-circle-wrapper::before {
     content: '';
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
-    border-radius: 50%; /* Faz virar um círculo */
-    border: 3px solid transparent; /* Borda base transparente */
-    
-    /* Pinta apenas o topo e a direita de dourado para criar o arco */
+    border-radius: 50%;
+    border: 3px solid transparent;
     border-top-color: var(--gold);
     border-right-color: var(--gold);
-    
-    /* Adiciona um brilho neon dourado */
     box-shadow: 0 0 15px rgba(197, 160, 89, 0.2); 
-    
-    /* Animação de giro infinito */
     animation: spinRing 1.5s linear infinite;
 }
 
-/* Animação de Rotação */
 @keyframes spinRing {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
+
 
 /* --- Navbar --- */
 .navbar {
@@ -204,21 +208,6 @@ ul { list-style: none; }
     box-shadow: 0 0 15px rgba(197, 160, 89, 0.6); /* Brilho Neon Dourado */
 }
 
-/* Ajuste para Mobile (para não ficar gigante no menu do celular) */
-@media screen and (max-width: 768px) {
-    .nav-links .btn-cliente {
-        background-color: transparent;
-        color: var(--gold) !important;
-        border: 1px solid var(--gold);
-        width: 100%;
-        justify-content: center;
-    }
-    
-    .nav-links .btn-cliente:hover {
-        background-color: var(--gold);
-        color: var(--black) !important;
-    }
-}
 
 
 /* Menu Mobile (Burger) */
@@ -906,6 +895,8 @@ footer {
     0% { transform: scale(1); opacity: 0.7; }
     100% { transform: scale(1.5); opacity: 0; }
 }
+/* Ajuste para Mobile (para não ficar gigante no menu do celular) */
+
 
 /* --- Responsive Mobile --- */
 @media screen and (max-width: 768px) {
@@ -984,24 +975,71 @@ footer {
         min-width: 100%; /* No celular ocupa a largura toda */
     }
 }
-
+/* Ajuste para Celular: 2 por linha com segurança */
 
 /* Ajuste para Celular: 2 por linha */
 @media screen and (max-width: 480px) {
+    .links-grid {
+        gap: 10px; /* Gap menor no celular */
+    }
+
     .link-card {
-        width: 45%; /* Ocupa quase metade da tela cada um */
+        /* Usa calc() para garantir que caibam 2 com o gap */
+        width: calc(50% - 10px); 
         min-width: auto;
     }
 }
+
 /* Responsividade */
-@media screen and (max-width: 900px) {
+/* Responsividade Footer - Ajuste Intermediário (Tablet) */
+@media screen and (max-width: 1024px) {
     .footer-container {
-        grid-template-columns: 1fr; /* Tudo em 1 coluna no celular */
+        /* Diminui o gap para não estourar */
+        gap: 20px; 
+        grid-template-columns: 1fr 1fr; /* 2 colunas no tablet */
+    }
+    
+    /* A coluna de localização ocupa as 2 colunas de baixo */
+    .location-col {
+        grid-column: span 2; 
+        text-align: center;
+    }
+    
+    .map-container {
+        max-width: 80%; /* Mapa não fica gigante */
+        margin: 0 auto 15px auto;
+    }
+    
+    .address-box {
+        justify-content: center;
+    }
+    
+    .map-buttons {
+        justify-content: center;
+        max-width: 80%;
+        margin: 0 auto;
+    }
+}
+
+/* Mobile (Celular) - Mantém 1 coluna */
+@media screen and (max-width: 768px) {
+    .footer-container {
+        grid-template-columns: 1fr;
         text-align: center;
         gap: 40px;
     }
+    
+    .location-col { grid-column: auto; } /* Reseta para celular */
+    .map-container, .map-buttons { max-width: 100%; }
+}
 
-    .footer-col h3::after { margin: 8px auto 0; } /* Centraliza o tracinho */
-    .social-links { justify-content: center; }
-    .address-box { justify-content: center; text-align: left; }
+/* AJUSTE MOBILE: Diminui um pouco o círculo no celular para não ficar gigante */
+@media screen and (max-width: 600px) {
+    .logo-circle-wrapper {
+        width: 140px; /* Menor no celular */
+        height: 140px;
+    }
+    .preloader-logo {
+        width: 70px; /* Logo menor */
+    }
 }
