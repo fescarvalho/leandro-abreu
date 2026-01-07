@@ -283,12 +283,21 @@
                     <li><strong>📧 Email:</strong> contato@leandroabreu.com.br</li>
                 </ul>
             </div>
-            <form class="contact-form">
-                <input type="text" placeholder="Seu Nome" required>
-                <input type="email" placeholder="Seu E-mail" required>
-                <textarea rows="5" placeholder="Sua Mensagem"></textarea>
-                <button type="submit" class="btn btn-dark">Enviar Mensagem</button>
-            </form>
+           
+                <form id="my-form" class="contact-form" action="https://formspree.io/f/mzdznvoq" method="POST">
+    
+                    <input type="text" name="nome" placeholder="Seu Nome" required>
+                    <input type="email" name="email" placeholder="Seu E-mail" required>
+                    <input type="text" name="assunto" placeholder="Assunto">
+                    <textarea name="mensagem" rows="5" placeholder="Sua Mensagem" required></textarea>
+                    
+                    <input type="hidden" name="_subject" value="Novo contato pelo Site!">
+                    <input type="hidden" name="_captcha" value="false">
+                
+                    <button type="submit" id="my-form-button" class="btn btn-dark">Enviar Mensagem</button>
+                    
+                    <p id="my-form-status"></p>
+                </form>
         </div>
     </section>
 
@@ -329,14 +338,11 @@
                 </div>
     
                 <div class="map-container">
-                    <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3701.698377466854!2d-41.9427!3d-21.0426!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjHCsDAyJzMzLjQiUyA0McKwNTYnMzMuNyJX!5e0!3m2!1spt-BR!2sbr!4v1600000000000!5m2!1spt-BR!2sbr" 
-                        width="100%" height="150" style="border:0;" allowfullscreen="" loading="lazy">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.726093054744!2d-41.97744742457381!3d-21.0436429739519!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xbc891a66deeb77%3A0x194d2c5228443ca3!2sLeandro%20Abreu%20Contabilidade!5e0!3m2!1spt-BR!2sbr!4v1767815285453!5m2!1spt-BR!2sbr" 
+                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
                     </iframe>
     
-                    <a href="https://www.google.com/maps/search/?api=1&query=Rua+Doutor+Raul+Travassos+03+Natividade+RJ" target="_blank" class="map-overlay" title="Abrir no Google Maps">
-                        <span><i class="fa-solid fa-arrow-up-right-from-square"></i> Abrir Mapa</span>
-                    </a>
+                    <iframe src="https://embed.waze.com/iframe?zoom=16&lat=-21.043648&lon=-41.974872&ct=livemap" width="600" height="450" allowfullscreen></iframe>
                 </div>
     
                 <div class="map-buttons">

@@ -162,3 +162,66 @@ gsap.fromTo(".testimonial-card",
         }
     }
 );
+
+// --- FORMULÁRIO AJAX (Sem redirecionar) ---
+var form = document.getElementById("my-form");
+
+async function handleSubmit(event) {
+    event.preventDefault(); // Impede o redirecionamento padrão
+    
+    var status = document.getElementById("my-form-status");
+    var btn = document.getElementById("my-form-button");
+    var originalBtnText = btn.innerText;
+
+    // Muda texto do botão para dar feedback visual
+    btn.innerText = "Enviando...";
+    btn.disabled = true;
+
+    var data = new FormData(event.target);
+
+    fetch(event.target.action, {
+        method: form.method,
+        body: data,
+        headers: {
+            'Accept': 'application/json'
+        }
+    }).then(response => {
+        if (response.ok) {
+            // SUCESSO
+            status.innerHTML = "✅ Mensagem enviada com sucesso! Em breve retornaremos.";
+            status.className = "success-message"; // Aplica estilo verde
+            form.reset(); // Limpa os campos
+            btn.innerText = "Enviado!";
+            
+            // Volta o botão ao normal depois de 3 segundos
+            setTimeout(() => {
+                btn.innerText = originalBtnText;
+                btn.disabled = false;
+                status.style.display = 'none'; // Esconde a mensagem
+                status.className = ""; // Limpa a classe
+            }, 5000);
+
+        } else {
+            // ERRO (Formspree retornou problemas)
+            response.json().then(data => {
+                if (Object.hasOwn(data, 'errors')) {
+                    status.innerHTML = data["errors"].map(error => error["message"]).join(", ");
+                } else {
+                    status.innerHTML = "❌ Ocorreu um erro ao enviar. Tente novamente.";
+                }
+                status.className = "error-message"; // Aplica estilo vermelho
+                btn.innerText = originalBtnText;
+                btn.disabled = false;
+            })
+        }
+    }).catch(error => {
+        // ERRO DE REDE
+        status.innerHTML = "❌ Erro de conexão. Verifique sua internet.";
+        status.className = "error-message";
+        btn.innerText = originalBtnText;
+        btn.disabled = false;
+    });
+}
+
+// Ativa a função quando o formulário for enviado
+form.addEventListener("submit", handleSubmit);
