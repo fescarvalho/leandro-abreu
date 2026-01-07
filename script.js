@@ -86,3 +86,23 @@ gsap.from(".link-card", {
     stagger: 0.15,
     ease: "back.out(1.7)"
 });
+
+// Animação da Barra de Estatísticas
+// Animação Stats (Correção de Alinhamento)
+gsap.fromTo(".stat-card", 
+    { y: 50, opacity: 0 },
+    {
+        y: 0, 
+        opacity: 1, 
+        duration: 0.8, 
+        stagger: 0.2,
+        scrollTrigger: {
+            trigger: ".stats-section",
+            start: "top 90%",
+        },
+        onComplete: function() {
+            // Garante que, ao terminar, o JS limpe qualquer estilo que possa causar desalinhamento
+            this.targets().forEach(target => target.style.transform = "none");
+        }
+    }
+);

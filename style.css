@@ -280,12 +280,54 @@ ul { list-style: none; }
     line-height: 1.6;
 }
 
-/* --- Responsividade --- */
-@media screen and (max-width: 992px) {
-    .services-grid { grid-template-columns: repeat(2, 1fr); }
+
+/* --- SEÇÃO DE ESTATÍSTICAS (Grid Perfeito) --- */
+.stats-section {
+    background-color: #000000; /* Preto absoluto para destacar */
+    padding: 60px 0;
+    border-top: 1px solid #222;
 }
-@media screen and (max-width: 600px) {
-    .services-grid { grid-template-columns: 1fr; }
+
+.stats-grid {
+    display: grid;
+    /* O SEGREDO: 4 colunas de tamanho idêntico (1 fração cada) */
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 30px; /* Espaço entre os cards */
+    align-items: center; /* Alinha tudo no centro verticalmente */
+}
+
+.stat-card {
+    background: transparent; /* Fundo transparente para ficar elegante no preto */
+    /* Apenas uma borda lateral dourada sutil */
+    border-left: 3px solid var(--gold); 
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+/* Hover simples */
+.stat-card:hover {
+    transform: translateY(-5px);
+    background: linear-gradient(to bottom, rgba(197, 160, 89, 0.05), transparent);
+}
+
+/* Número Gigante e Dourado */
+.stat-number {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 5px;
+    font-family: var(--font-heading);
+    line-height: 1;
+}
+
+/* Texto descritivo em Branco/Cinza */
+.stat-card p {
+    color: #eeeeee;
+    font-size: 0.85rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 2px;
 }
 /* --- Useful Links (Dark Section) --- */
 .useful-links {
@@ -442,5 +484,33 @@ footer {
         width: 50px;
         height: 50px;
         font-size: 28px;
+    }
+}
+/* --- Responsividade --- */
+@media screen and (max-width: 992px) {
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media screen and (max-width: 600px) {
+    .services-grid { grid-template-columns: 1fr; }
+}
+
+/* --- Responsividade das Stats --- */
+/* Tablet: 2 por linha */
+@media screen and (max-width: 992px) {
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+    }
+}
+
+/* Celular: 1 por linha (um embaixo do outro) */
+@media screen and (max-width: 600px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+    .stat-card {
+        border-left: none; /* Remove borda lateral */
+        border-bottom: 3px solid var(--gold); /* Coloca borda embaixo */
+        padding-bottom: 30px;
     }
 }
