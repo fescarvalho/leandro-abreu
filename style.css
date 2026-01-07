@@ -85,6 +85,63 @@ ul { list-style: none; }
     margin: 10px auto 0;
 }
 
+/* --- PRELOADER (Círculo Giratório Dourado) --- */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000000; /* Fundo Preto Puro */
+    z-index: 99999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Container que segura o círculo e a logo */
+.logo-circle-wrapper {
+    position: relative;
+    width: 180px;  /* Tamanho total do círculo */
+    height: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* A Logo no centro */
+.preloader-logo {
+    width: 100px; /* Logo um pouco menor que o círculo */
+    height: auto;
+    position: relative;
+    z-index: 2; /* Garante que a logo fique na frente do círculo */
+}
+
+/* O Círculo Dourado Giratório (Feito com ::before) */
+.logo-circle-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    border-radius: 50%; /* Faz virar um círculo */
+    border: 3px solid transparent; /* Borda base transparente */
+    
+    /* Pinta apenas o topo e a direita de dourado para criar o arco */
+    border-top-color: var(--gold);
+    border-right-color: var(--gold);
+    
+    /* Adiciona um brilho neon dourado */
+    box-shadow: 0 0 15px rgba(197, 160, 89, 0.2); 
+    
+    /* Animação de giro infinito */
+    animation: spinRing 1.5s linear infinite;
+}
+
+/* Animação de Rotação */
+@keyframes spinRing {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
 /* --- Navbar --- */
 .navbar {
     background-color: var(--black);

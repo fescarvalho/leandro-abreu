@@ -1,6 +1,26 @@
 // Registra o plugin ScrollTrigger
 gsap.registerPlugin(ScrollTrigger);
 
+// --- PRELOADER (Animação de Saída) ---
+// Espera o site carregar tudo (imagens, scripts, etc)
+window.addEventListener("load", () => {
+    const tlLoader = gsap.timeline({ delay: 0.5 }); // Pequeno delay inicial
+
+    // Apenas sobe a cortina preta, revelando o site
+    tlLoader.to("#preloader", {
+        y: "-100%",        // Move para cima
+        duration: 2.5,     // Um pouco mais lento para ser elegante
+        ease: "power4.inOut" // Efeito suave
+    })
+    // Anima o texto da Hero logo em seguida
+    .from(".hero-content", {
+        y: 50,
+        opacity: 0,
+        duration: 1,
+        ease: "power3.out"
+    }, "-=0.8"); // Começa bem antes do preloader terminar de subir
+});
+
 // 1. Menu Mobile (Burger)
 const navSlide = () => {
     const burger = document.querySelector('.burger');
