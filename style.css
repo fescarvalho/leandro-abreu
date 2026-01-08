@@ -1,36 +1,24 @@
-/* -----------------------------------------------------------
-   ÍNDICE (TABLE OF CONTENTS)
-   1. Variáveis & Reset
-   2. Utilitários Gerais
-   3. Preloader
-   4. Navbar & Menu
-   5. Hero Section
-   6. Seção Serviços
-   7. Seção Estatísticas
-   8. Seção Depoimentos
-   9. Links Úteis
-   10. Contato
-   11. Footer
-   12. Botão WhatsApp
-   13. Responsividade
------------------------------------------------------------ */
+/* ==========================================================================
+   LEANDRO ABREU CONTABILIDADE - CSS MASTER
+   ========================================================================== */
 
 /* -----------------------------------------------------------
-   1. VARIÁVEIS & RESET (Central de Controle)
+   1. VARIÁVEIS & CONFIGURAÇÕES GERAIS
 ----------------------------------------------------------- */
 :root {
-  /* --- Paleta de Cores --- */
+  /* --- Cores Institucionais --- */
   --gold: #c5a059;
   --gold-light: #dcc186;
+  --gold-dark: #b08d4e;
 
-  /* Tons de Escuro */
-  --black: #0a0a0a; /* Preto Principal */
-  --black-deep: #050505; /* Preto Fundo de Seção (Depoimentos/Footer) */
-  --black-pure: #000000; /* Preto Absoluto (Preloader/Stats) */
-  --dark-grey: #1c1c1c;
-  --grey-border: #333333;
+  /* --- Tons Monocromáticos --- */
+  --black: #0a0a0a; /* Fundo Principal */
+  --black-deep: #050505; /* Fundo Secundário (Footer/Depoimentos) */
+  --black-pure: #000000; /* Preto Absoluto (Preloader) */
+  --dark-grey: #1c1c1c; /* Elementos de destaque */
+  --grey-border: #333333; /* Bordas sutis */
 
-  /* Texto */
+  /* --- Texto --- */
   --white: #ffffff;
   --text-grey: #cccccc;
   --text-muted: #888888;
@@ -39,24 +27,23 @@
   --font-heading: "Playfair Display", serif;
   --font-body: "Poppins", sans-serif;
 
-  /* --- Layout & Design --- */
+  /* --- Layout & Espaçamento --- */
   --container-width: 1200px;
   --section-padding: 80px 0;
 
-  /* Bordas e Arredondamentos (Mude aqui para afetar tudo) */
+  /* --- Acabamento (Bordas e Sombras) --- */
   --radius-sm: 4px; /* Botões */
-  --radius-md: 8px; /* Cards menores */
-  --radius-lg: 12px; /* Cards grandes */
+  --radius-md: 8px; /* Cards Médios */
+  --radius-lg: 12px; /* Cards Grandes */
 
-  /* Sombras Padronizadas */
-  --shadow-normal: 0 4px 10px rgba(0, 0, 0, 0.3);
-  --shadow-hover: 0 10px 40px rgba(0, 0, 0, 0.5);
-  --glow-gold: 0 0 15px rgba(197, 160, 89, 0.4);
+  --shadow-sm: 0 4px 10px rgba(0, 0, 0, 0.3);
+  --shadow-glow: 0 0 20px rgba(197, 160, 89, 0.25);
 
-  /* Transições */
-  --transition: all 0.3s ease;
+  /* --- Animações --- */
+  --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
+/* --- Reset & Base --- */
 * {
   margin: 0;
   padding: 0;
@@ -66,47 +53,26 @@
 html,
 body {
   width: 100%;
-  overflow-x: hidden;
+  overflow-x: hidden; /* BLINDAGEM: Impede rolagem lateral indesejada */
+  scroll-behavior: smooth;
   position: relative;
-  scroll-behavior: smooth; /* Rolagem suave nativa */
 }
 
 body {
   font-family: var(--font-body);
   background-color: var(--white);
   color: var(--black);
-  /* MODERNIZAÇÃO: Fontes mais nítidas e elegantes */
-  -webkit-font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased; /* Fontes mais nítidas */
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* MODERNIZAÇÃO: Seleção de Texto Personalizada (Dourada) */
-::selection {
-  background: var(--gold);
-  color: var(--black);
-}
-
-/* MODERNIZAÇÃO: Barra de Rolagem Personalizada (Dark/Gold) */
-::-webkit-scrollbar {
-  width: 10px;
-}
-::-webkit-scrollbar-track {
-  background: var(--black);
-}
-::-webkit-scrollbar-thumb {
-  background: var(--gold);
-  border-radius: 5px;
-  border: 2px solid var(--black); /* Cria um espaço visual */
-}
-::-webkit-scrollbar-thumb:hover {
-  background: var(--gold-light);
-}
-
+/* BLINDAGEM DE MÍDIA: Imagens e iframes nunca estouram o pai */
 img,
 iframe,
 video {
   max-width: 100%;
   height: auto;
+  display: block; /* Remove espaços fantasmas abaixo de imagens */
 }
 
 a {
@@ -118,19 +84,42 @@ ul {
   list-style: none;
 }
 
+/* --- Personalização da Barra de Rolagem --- */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--black);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--gold);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gold-light);
+}
+
+/* --- Seleção de Texto --- */
+::selection {
+  background: var(--gold);
+  color: var(--black);
+}
+
 /* -----------------------------------------------------------
-   2. UTILITÁRIOS GERAIS
+   2. UTILITÁRIOS & COMPONENTES GLOBAIS
 ----------------------------------------------------------- */
 .container {
   max-width: var(--container-width);
   margin: 0 auto;
   padding: 0 20px;
+  width: 100%; /* Garante responsividade */
 }
 
 .section {
   padding: var(--section-padding);
 }
 
+/* Títulos */
 .section-title {
   font-family: var(--font-heading);
   font-size: 2.5rem;
@@ -147,6 +136,13 @@ ul {
   height: 3px;
   background: var(--gold);
   margin: 10px auto 0;
+}
+
+.section-title.align-left {
+  text-align: left;
+}
+.section-title.align-left::after {
+  margin: 10px 0 0;
 }
 
 .section-subtitle {
@@ -169,6 +165,7 @@ ul {
   cursor: pointer;
   border: none;
   transition: var(--transition);
+  text-align: center;
 }
 
 .btn-gold {
@@ -178,8 +175,7 @@ ul {
 .btn-gold:hover {
   background-color: var(--gold-light);
   transform: translateY(-2px);
-  /* MODERNIZAÇÃO: Glow Dourado no Hover */
-  box-shadow: 0 5px 15px rgba(197, 160, 89, 0.4);
+  box-shadow: var(--shadow-glow);
 }
 
 .btn-dark {
@@ -190,11 +186,10 @@ ul {
 .btn-dark:hover {
   background-color: var(--gold);
   color: var(--black);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 /* -----------------------------------------------------------
-   3. PRELOADER
+   3. PRELOADER (TELA DE CARREGAMENTO)
 ----------------------------------------------------------- */
 #preloader {
   position: fixed;
@@ -238,7 +233,7 @@ ul {
   border: 3px solid transparent;
   border-top-color: var(--gold);
   border-right-color: var(--gold);
-  box-shadow: 0 0 15px rgba(197, 160, 89, 0.2);
+  box-shadow: var(--shadow-glow);
   animation: spinRing 1.5s linear infinite;
 }
 
@@ -252,20 +247,18 @@ ul {
 }
 
 /* -----------------------------------------------------------
-   4. NAVBAR & MENU
+   4. NAVBAR & NAVEGAÇÃO
 ----------------------------------------------------------- */
 .navbar {
-  background-color: var(--black);
+  background-color: rgba(10, 10, 10, 0.95); /* Semi-transparente */
+  backdrop-filter: blur(10px); /* Efeito vidro */
   height: 80px;
   display: flex;
   align-items: center;
   position: fixed;
   width: 100%;
   z-index: 1000;
-  box-shadow: var(--shadow-normal);
-  /* MODERNIZAÇÃO: Backdrop Filter para efeito de vidro no menu */
-  backdrop-filter: blur(10px);
-  background-color: rgba(10, 10, 10, 0.95);
+  box-shadow: var(--shadow-sm);
 }
 
 .nav-container {
@@ -308,16 +301,14 @@ ul {
   align-items: center;
   gap: 8px;
 }
-
 .nav-links .btn-cliente:hover {
   background-color: var(--white);
   border-color: var(--white);
   color: var(--black) !important;
   transform: translateY(-2px);
-  box-shadow: var(--glow-gold);
+  box-shadow: var(--shadow-glow);
 }
 
-/* Menu Mobile */
 .burger {
   display: none;
   cursor: pointer;
@@ -330,36 +321,94 @@ ul {
   transition: var(--transition);
 }
 
-/* --- SEÇÃO SOBRE NÓS (Estilo Premium) --- */
-.about-section {
-  background-color: #f9f9f9; /* Fundo claro para contraste, ou mude para var(--black) se quiser dark */
-  padding: 100px 0;
+/* -----------------------------------------------------------
+   5. HERO SECTION (TOPO)
+----------------------------------------------------------- */
+.hero {
+  height: 100vh;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+.swiper-slide {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6));
+  z-index: 2;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 3;
+  color: var(--white);
+}
+
+.hero h1 {
+  font-family: var(--font-heading);
+  font-size: 4rem;
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+.hero h1 span {
+  color: var(--gold);
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  color: var(--text-grey);
+}
+
+/* -----------------------------------------------------------
+   6. SEÇÃO "SOBRE NÓS" (Estilo Premium)
+----------------------------------------------------------- */
+.about-section {
+  background-color: #f9f9f9;
+  padding: 100px 0;
   overflow: hidden;
 }
 
 .about-container {
   display: grid;
-  grid-template-columns: 1fr 1fr; /* Dividido ao meio */
+  grid-template-columns: 1fr 1fr;
   gap: 60px;
   align-items: center;
 }
 
-/* --- Lado da Imagem --- */
 .about-image-wrapper {
   position: relative;
   display: flex;
   justify-content: center;
 }
 
-/* Círculo Dourado atrás da foto */
 .circle-bg {
   position: absolute;
   width: 400px;
   height: 400px;
   background-color: var(--gold);
   border-radius: 50%;
-  opacity: 0.2; /* Dourado suave */
+  opacity: 0.15;
   z-index: 1;
   top: 50%;
   left: 50%;
@@ -369,21 +418,19 @@ ul {
 .about-img {
   position: relative;
   z-index: 2;
-  border-radius: 20px; /* Borda arredondada suave */
+  border-radius: var(--radius-lg);
   max-height: 500px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
-  /* Se a foto for PNG transparente, remova border-radius e box-shadow */
+  box-shadow: var(--shadow-sm);
 }
 
-/* Card Flutuante (O detalhe premium) */
 .floating-card {
   position: absolute;
   bottom: 30px;
-  right: -20px; /* Sai um pouco pra fora */
+  right: -20px;
   background: var(--white);
   padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
   display: flex;
   align-items: center;
   gap: 15px;
@@ -407,25 +454,23 @@ ul {
   font-size: 2rem;
   color: var(--gold);
 }
-
 .floating-card strong {
   display: block;
   font-size: 1.2rem;
   color: var(--black);
 }
-
 .floating-card span {
   font-size: 0.8rem;
   color: #666;
 }
 
-/* --- Lado do Texto --- */
 .sub-heading {
   color: var(--gold);
   font-size: 0.9rem;
   letter-spacing: 2px;
   margin-bottom: 10px;
   text-transform: uppercase;
+  font-weight: 600;
 }
 
 .about-text h2 {
@@ -433,15 +478,10 @@ ul {
   margin-bottom: 25px;
   line-height: 1.2;
 }
-
 .about-text p {
   color: #555;
   margin-bottom: 20px;
   line-height: 1.6;
-}
-
-.about-list {
-  margin-bottom: 30px;
 }
 
 .about-list li {
@@ -452,110 +492,17 @@ ul {
   color: #333;
   font-weight: 500;
 }
-
 .about-list li i {
-  color: var(--gold); /* Checkzinho dourado */
-}
-
-/* Responsividade */
-@media screen and (max-width: 900px) {
-  .about-container {
-    grid-template-columns: 1fr; /* Uma coluna no celular */
-    text-align: center;
-  }
-
-  .about-text h2 {
-    text-align: center;
-  } /* Centraliza título */
-  .section-title.align-left::after {
-    margin: 10px auto 0;
-  } /* Centraliza o tracinho */
-
-  .about-image-wrapper {
-    margin-bottom: 40px;
-  }
-  .circle-bg {
-    width: 300px;
-    height: 300px;
-  }
-
-  .floating-card {
-    right: 0;
-    bottom: -20px; /* Ajuste para não quebrar a tela */
-  }
-
-  .about-list li {
-    justify-content: center;
-  } /* Centraliza lista */
-}
-/* -----------------------------------------------------------
-   5. HERO SECTION
------------------------------------------------------------ */
-.hero {
-  height: 100vh;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  overflow: hidden;
-}
-
-.swiper {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1;
-}
-
-.swiper-slide {
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
-.hero-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5));
-  z-index: 2;
-}
-
-.hero-content {
-  position: relative;
-  z-index: 3;
-  color: var(--white);
-}
-
-.hero h1 {
-  font-family: var(--font-heading);
-  font-size: 4rem;
-  line-height: 1.1;
-  margin-bottom: 20px;
-}
-
-.hero p {
-  font-size: 1.2rem;
-  margin-bottom: 30px;
-  color: var(--text-grey);
-}
-.hero span {
   color: var(--gold);
 }
 
 /* -----------------------------------------------------------
-   6. SEÇÃO SERVIÇOS
+   7. SEÇÃO SERVIÇOS (Dark & Glass)
 ----------------------------------------------------------- */
 .services {
   background-color: var(--black);
   background-image: radial-gradient(circle at center, #1a1a1a 0%, #000000 100%);
   color: var(--white);
-  padding: 100px 0;
 }
 
 .services .section-title {
@@ -576,14 +523,13 @@ ul {
   padding: 50px 30px;
   border-radius: var(--radius-lg);
   text-align: center;
-  transition: all 0.4s ease;
+  transition: var(--transition);
   opacity: 1;
   transform: translateY(0);
   display: flex;
   flex-direction: column;
   align-items: center;
   height: 100%;
-  /* MODERNIZAÇÃO: Backdrop filter para efeito de vidro real */
   backdrop-filter: blur(5px);
 }
 
@@ -591,7 +537,7 @@ ul {
   background: rgba(197, 160, 89, 0.08);
   border-color: var(--gold);
   transform: translateY(-10px);
-  box-shadow: var(--shadow-hover);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
 }
 
 .icon-box {
@@ -604,13 +550,9 @@ ul {
 .service-card h3 {
   color: var(--white);
   font-size: 1.3rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1px;
   margin-bottom: 20px;
   position: relative;
 }
-
 .service-card h3::after {
   content: "";
   display: block;
@@ -618,7 +560,7 @@ ul {
   height: 3px;
   background-color: var(--gold);
   margin: 15px auto 0;
-  transition: width 0.3s;
+  transition: 0.3s;
 }
 .service-card:hover h3::after {
   width: 80px;
@@ -631,7 +573,7 @@ ul {
 }
 
 /* -----------------------------------------------------------
-   7. SEÇÃO ESTATÍSTICAS
+   8. SEÇÃO ESTATÍSTICAS
 ----------------------------------------------------------- */
 .stats-section {
   background-color: var(--black-pure);
@@ -677,7 +619,7 @@ ul {
 }
 
 /* -----------------------------------------------------------
-   8. SEÇÃO DEPOIMENTOS
+   9. SEÇÃO DEPOIMENTOS
 ----------------------------------------------------------- */
 .testimonials {
   background-color: var(--black-deep);
@@ -695,7 +637,6 @@ ul {
   justify-content: center;
   gap: 30px;
   flex-wrap: wrap;
-  width: 100%;
 }
 
 .testimonial-card {
@@ -713,14 +654,13 @@ ul {
   opacity: 1;
   transform: translateY(0);
   text-align: left;
-  backdrop-filter: blur(5px);
 }
 
 .testimonial-card:hover {
   transform: translateY(-10px);
   background: rgba(255, 255, 255, 0.05);
   border-color: var(--gold);
-  box-shadow: var(--shadow-hover);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 .quote-icon {
@@ -729,7 +669,6 @@ ul {
   opacity: 0.5;
   margin-bottom: 20px;
 }
-
 .testimonial-text {
   font-style: italic;
   color: #e0e0e0;
@@ -746,7 +685,6 @@ ul {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   padding-top: 20px;
 }
-
 .client-img {
   width: 50px;
   height: 50px;
@@ -754,19 +692,16 @@ ul {
   border: 2px solid var(--gold);
   object-fit: cover;
 }
-
 .client-info h4 {
   color: var(--white);
   font-size: 1rem;
   margin-bottom: 2px;
 }
-
 .client-info span {
   color: var(--gold);
   font-size: 0.75rem;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 1px;
 }
 .stars {
   color: var(--gold);
@@ -774,15 +709,13 @@ ul {
 }
 
 /* -----------------------------------------------------------
-   9. LINKS ÚTEIS
+   10. LINKS ÚTEIS
 ----------------------------------------------------------- */
 .useful-links {
   background-color: #111;
-  padding: 80px 0;
   color: var(--white);
   border-top: 1px solid #222;
 }
-
 .useful-links .section-title {
   color: var(--white);
 }
@@ -816,7 +749,7 @@ ul {
   border-color: var(--gold);
   background: #151515;
   transform: translateY(-3px);
-  box-shadow: var(--shadow-normal);
+  box-shadow: var(--shadow-sm);
 }
 
 .link-card .icon {
@@ -837,7 +770,6 @@ ul {
   font-weight: 600;
   line-height: 1.2;
 }
-
 .link-card p {
   color: var(--text-muted);
   font-size: 0.7rem;
@@ -846,14 +778,13 @@ ul {
 }
 
 /* -----------------------------------------------------------
-   10. CONTATO & MENSAGENS
+   11. CONTATO
 ----------------------------------------------------------- */
 .contact-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 50px;
 }
-
 .align-left {
   text-align: left;
 }
@@ -878,14 +809,12 @@ ul {
   border: 1px solid #ccc;
   font-family: var(--font-body);
 }
-
 .contact-form input:focus,
 .contact-form textarea:focus {
   outline: none;
   border-color: var(--gold);
 }
 
-/* Status do Formulário (Feedback Visual) */
 #my-form-status {
   margin-top: 15px;
   text-align: center;
@@ -896,36 +825,21 @@ ul {
   padding: 10px;
   display: none;
 }
-
 .success-message {
   background-color: rgba(37, 211, 102, 0.1);
   color: #0f2c1a;
   border: 1px solid #0b1d12;
   display: block !important;
-  animation: fadeIn 0.5s ease;
 }
-
 .error-message {
   background-color: rgba(255, 51, 51, 0.1);
   color: #ff3333;
   border: 1px solid #ff3333;
   display: block !important;
-  animation: fadeIn 0.5s ease;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 /* -----------------------------------------------------------
-   11. FOOTER
+   12. FOOTER
 ----------------------------------------------------------- */
 footer {
   background-color: var(--black-deep);
@@ -949,7 +863,6 @@ footer {
   position: relative;
   display: inline-block;
 }
-
 .footer-col h3::after {
   content: "";
   display: block;
@@ -970,7 +883,6 @@ footer {
   gap: 15px;
   margin-top: 20px;
 }
-
 .social-links a {
   width: 40px;
   height: 40px;
@@ -1017,35 +929,10 @@ footer {
   margin-bottom: 15px;
   height: 150px;
 }
-
 .map-container iframe {
   filter: grayscale(100%) invert(90%);
   opacity: 0.7;
   transition: 0.3s;
-}
-.map-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.6);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transition: 0.3s;
-}
-.map-overlay span {
-  background: var(--gold);
-  color: var(--black);
-  padding: 8px 15px;
-  border-radius: 4px;
-  font-weight: 600;
-  font-size: 0.9rem;
-}
-.map-container:hover .map-overlay {
-  opacity: 1;
 }
 .map-container:hover iframe {
   opacity: 0.4;
@@ -1097,7 +984,7 @@ footer {
 }
 
 /* -----------------------------------------------------------
-   12. BOTÃO WHATSAPP FLUTUANTE
+   13. BOTÃO WHATSAPP
 ----------------------------------------------------------- */
 .whatsapp-btn {
   position: fixed;
@@ -1112,16 +999,14 @@ footer {
   align-items: center;
   justify-content: center;
   font-size: 35px;
-  box-shadow: var(--shadow-normal);
+  box-shadow: var(--shadow-sm);
   z-index: 1000;
-  transition: all 0.3s ease;
+  transition: var(--transition);
 }
-
 .whatsapp-btn:hover {
   background-color: #20ba5a;
   transform: scale(1.1);
 }
-
 .whatsapp-btn::before {
   content: "";
   position: absolute;
@@ -1133,7 +1018,6 @@ footer {
   opacity: 0.7;
   animation: pulse 2s infinite;
 }
-
 @keyframes pulse {
   0% {
     transform: scale(1);
@@ -1146,10 +1030,10 @@ footer {
 }
 
 /* -----------------------------------------------------------
-   13. RESPONSIVIDADE (Media Queries)
+   14. RESPONSIVIDADE (MEDIA QUERIES)
 ----------------------------------------------------------- */
 
-/* --- TABLET (max-width: 1024px) --- */
+/* Tablets / Laptops Pequenos */
 @media screen and (max-width: 1024px) {
   .footer-container {
     gap: 20px;
@@ -1177,8 +1061,33 @@ footer {
   }
 }
 
-/* --- MOBILE LANDSCAPE (max-width: 900px) --- */
+/* Tablets Portrait / Celulares Grandes */
 @media screen and (max-width: 900px) {
+  .about-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .about-text h2 {
+    text-align: center;
+  }
+  .section-title.align-left::after {
+    margin: 10px auto 0;
+  }
+  .about-image-wrapper {
+    margin-bottom: 40px;
+  }
+  .circle-bg {
+    width: 300px;
+    height: 300px;
+  }
+  .floating-card {
+    right: 0;
+    bottom: -20px;
+  }
+  .about-list li {
+    justify-content: center;
+  }
+
   .footer-container {
     grid-template-columns: 1fr;
     text-align: center;
@@ -1203,7 +1112,7 @@ footer {
   }
 }
 
-/* --- MOBILE PORTRAIT (max-width: 768px) --- */
+/* Celulares Padrão */
 @media screen and (max-width: 768px) {
   .nav-links {
     position: absolute;
@@ -1214,21 +1123,21 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 50%;
+    width: 60%;
     transform: translateX(100%);
     transition: transform 0.5s ease-in;
     justify-content: space-around;
     padding-bottom: 50px;
   }
-  .nav-links li {
-    opacity: 0;
+  .nav-active {
+    transform: translateX(0%);
   }
   .burger {
     display: block;
   }
-  .nav-active {
-    transform: translateX(0%);
-  }
+  .nav-links li {
+    opacity: 0;
+  } /* Animado via JS */
 
   @keyframes navLinkFade {
     from {
@@ -1242,15 +1151,12 @@ footer {
   }
 
   .nav-links .btn-cliente {
-    background-color: transparent;
-    color: var(--gold) !important;
-    border: 1px solid var(--gold);
-    width: 100%;
+    background: transparent;
+    width: 80%;
     justify-content: center;
   }
   .nav-links .btn-cliente:hover {
-    background-color: var(--gold);
-    color: var(--black) !important;
+    background: var(--gold);
   }
 
   .hero h1 {
@@ -1264,7 +1170,7 @@ footer {
   }
 }
 
-/* --- MOBILE PEQUENO (max-width: 600px) --- */
+/* Celulares Pequenos */
 @media screen and (max-width: 600px) {
   .services-grid,
   .stats-grid,
@@ -1285,17 +1191,16 @@ footer {
   .preloader-logo {
     width: 70px;
   }
-
   .whatsapp-btn {
-    bottom: 20px;
-    right: 20px;
     width: 50px;
     height: 50px;
     font-size: 28px;
+    bottom: 20px;
+    right: 20px;
   }
 }
 
-/* --- MOBILE EXTRA PEQUENO (max-width: 480px) --- */
+/* Celulares Muito Pequenos */
 @media screen and (max-width: 480px) {
   .links-grid {
     gap: 10px;
