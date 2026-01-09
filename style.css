@@ -1,49 +1,48 @@
 /* ==========================================================================
-   LEANDRO ABREU CONTABILIDADE - CSS MASTER
+   LEANDRO ABREU CONTABILIDADE - CSS MASTER (FINAL)
    ========================================================================== */
 
 /* -----------------------------------------------------------
-   1. VARIÁVEIS & CONFIGURAÇÕES GERAIS
+   1. VARIÁVEIS (Central de Controle)
 ----------------------------------------------------------- */
 :root {
-  /* --- Cores Institucionais --- */
+  /* --- Cores --- */
   --gold: #c5a059;
   --gold-light: #dcc186;
   --gold-dark: #b08d4e;
 
-  /* --- Tons Monocromáticos --- */
-  --black: #0a0a0a; /* Fundo Principal */
-  --black-deep: #050505; /* Fundo Secundário (Footer/Depoimentos) */
-  --black-pure: #000000; /* Preto Absoluto (Preloader) */
-  --dark-grey: #1c1c1c; /* Elementos de destaque */
-  --grey-border: #333333; /* Bordas sutis */
-
-  /* --- Texto --- */
+  --black: #0a0a0a; /* Principal */
+  --black-deep: #050505; /* Secundário */
+  --black-pure: #000000; /* Preloader */
   --white: #ffffff;
+
   --text-grey: #cccccc;
   --text-muted: #888888;
+  --grey-border: #333333;
 
   /* --- Tipografia --- */
   --font-heading: "Playfair Display", serif;
   --font-body: "Poppins", sans-serif;
 
-  /* --- Layout & Espaçamento --- */
+  /* --- Layout --- */
   --container-width: 1200px;
   --section-padding: 80px 0;
 
-  /* --- Acabamento (Bordas e Sombras) --- */
+  /* --- Acabamento --- */
   --radius-sm: 4px; /* Botões */
-  --radius-md: 8px; /* Cards Médios */
+  --radius-md: 8px; /* Inputs/Cards Pequenos */
   --radius-lg: 12px; /* Cards Grandes */
 
   --shadow-sm: 0 4px 10px rgba(0, 0, 0, 0.3);
-  --shadow-glow: 0 0 20px rgba(197, 160, 89, 0.25);
+  --shadow-hover: 0 10px 40px rgba(0, 0, 0, 0.5);
+  --glow-gold: 0 0 20px rgba(197, 160, 89, 0.25);
 
-  /* --- Animações --- */
   --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-/* --- Reset & Base --- */
+/* -----------------------------------------------------------
+   2. RESET & BLINDAGEM (Shielding)
+----------------------------------------------------------- */
 * {
   margin: 0;
   padding: 0;
@@ -53,7 +52,7 @@
 html,
 body {
   width: 100%;
-  overflow-x: hidden; /* BLINDAGEM: Impede rolagem lateral indesejada */
+  overflow-x: hidden; /* BLINDAGEM: Impede rolagem lateral */
   scroll-behavior: smooth;
   position: relative;
 }
@@ -62,17 +61,16 @@ body {
   font-family: var(--font-body);
   background-color: var(--white);
   color: var(--black);
-  -webkit-font-smoothing: antialiased; /* Fontes mais nítidas */
+  -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* BLINDAGEM DE MÍDIA: Imagens e iframes nunca estouram o pai */
 img,
 iframe,
 video {
   max-width: 100%;
   height: auto;
-  display: block; /* Remove espaços fantasmas abaixo de imagens */
+  display: block;
 }
 
 a {
@@ -84,7 +82,7 @@ ul {
   list-style: none;
 }
 
-/* --- Personalização da Barra de Rolagem --- */
+/* Barra de Rolagem */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -94,32 +92,31 @@ ul {
 ::-webkit-scrollbar-thumb {
   background: var(--gold);
   border-radius: 4px;
+  border: 2px solid var(--black);
 }
 ::-webkit-scrollbar-thumb:hover {
   background: var(--gold-light);
 }
 
-/* --- Seleção de Texto --- */
 ::selection {
   background: var(--gold);
   color: var(--black);
 }
 
 /* -----------------------------------------------------------
-   2. UTILITÁRIOS & COMPONENTES GLOBAIS
+   3. UTILITÁRIOS GLOBAIS
 ----------------------------------------------------------- */
 .container {
   max-width: var(--container-width);
   margin: 0 auto;
   padding: 0 20px;
-  width: 100%; /* Garante responsividade */
+  width: 100%;
 }
 
 .section {
   padding: var(--section-padding);
 }
 
-/* Títulos */
 .section-title {
   font-family: var(--font-heading);
   font-size: 2.5rem;
@@ -154,7 +151,6 @@ ul {
   margin-top: -30px;
 }
 
-/* Botões */
 .btn {
   display: inline-block;
   padding: 12px 30px;
@@ -175,7 +171,7 @@ ul {
 .btn-gold:hover {
   background-color: var(--gold-light);
   transform: translateY(-2px);
-  box-shadow: var(--shadow-glow);
+  box-shadow: var(--glow-gold);
 }
 
 .btn-dark {
@@ -188,8 +184,19 @@ ul {
   color: var(--black);
 }
 
+/* Botão Outline */
+.btn-outline {
+  border: 1px solid var(--white);
+  color: var(--white);
+  margin-left: 15px;
+}
+.btn-outline:hover {
+  background: var(--white);
+  color: var(--black);
+}
+
 /* -----------------------------------------------------------
-   3. PRELOADER (TELA DE CARREGAMENTO)
+   4. PRELOADER
 ----------------------------------------------------------- */
 #preloader {
   position: fixed;
@@ -233,7 +240,7 @@ ul {
   border: 3px solid transparent;
   border-top-color: var(--gold);
   border-right-color: var(--gold);
-  box-shadow: var(--shadow-glow);
+  box-shadow: var(--glow-gold);
   animation: spinRing 1.5s linear infinite;
 }
 
@@ -247,11 +254,11 @@ ul {
 }
 
 /* -----------------------------------------------------------
-   4. NAVBAR & NAVEGAÇÃO
+   5. NAVBAR
 ----------------------------------------------------------- */
 .navbar {
-  background-color: rgba(10, 10, 10, 0.95); /* Semi-transparente */
-  backdrop-filter: blur(10px); /* Efeito vidro */
+  background-color: rgba(10, 10, 10, 0.95);
+  backdrop-filter: blur(10px);
   height: 80px;
   display: flex;
   align-items: center;
@@ -289,7 +296,6 @@ ul {
   color: var(--gold);
 }
 
-/* Botão Área do Cliente */
 .nav-links .btn-cliente {
   background-color: var(--gold);
   color: var(--black) !important;
@@ -306,7 +312,7 @@ ul {
   border-color: var(--white);
   color: var(--black) !important;
   transform: translateY(-2px);
-  box-shadow: var(--shadow-glow);
+  box-shadow: var(--glow-gold);
 }
 
 .burger {
@@ -322,7 +328,7 @@ ul {
 }
 
 /* -----------------------------------------------------------
-   5. HERO SECTION (TOPO)
+   6. HERO SECTION
 ----------------------------------------------------------- */
 .hero {
   height: 100vh;
@@ -381,25 +387,57 @@ ul {
 }
 
 /* -----------------------------------------------------------
-   6. SEÇÃO "SOBRE NÓS" (Estilo Premium)
+   7. SEÇÃO "SOBRE NÓS" (FLEXBOX ALINHADO)
 ----------------------------------------------------------- */
 .about-section {
   background-color: #f9f9f9;
   padding: 100px 0;
   overflow: hidden;
+  position: relative;
 }
 
 .about-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
+  display: flex;
+  flex-wrap: wrap; /* Importante para responsividade */
+  justify-content: center;
   align-items: center;
+  gap: 60px;
+  width: 100%;
 }
 
+.about-img {
+  position: relative;
+  z-index: 2;
+  border-radius: var(--radius-lg);
+  max-height: 500px;
+  box-shadow: var(--shadow-sm);
+}
+
+/* Lado Esquerdo */
 .about-image-wrapper {
+  flex: 1 1 450px;
   position: relative;
   display: flex;
   justify-content: center;
+  align-items: center;
+  max-width: 550px;
+  z-index: 100;
+}
+
+.aboutSwiper {
+  width: 100%;
+  height: 500px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  z-index: 2;
+  background-color: #eee;
+}
+
+.aboutSwiper .swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
 }
 
 .circle-bg {
@@ -415,22 +453,14 @@ ul {
   transform: translate(-50%, -50%);
 }
 
-.about-img {
-  position: relative;
-  z-index: 2;
-  border-radius: var(--radius-lg);
-  max-height: 500px;
-  box-shadow: var(--shadow-sm);
-}
-
 .floating-card {
   position: absolute;
-  bottom: 30px;
+  bottom: 40px;
   right: -20px;
   background: var(--white);
   padding: 20px;
   border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-hover);
   display: flex;
   align-items: center;
   gap: 15px;
@@ -464,47 +494,64 @@ ul {
   color: #666;
 }
 
+/* Lado Direito */
+.about-text {
+  flex: 1 1 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 20px;
+}
+
 .sub-heading {
   color: var(--gold);
   font-size: 0.9rem;
   letter-spacing: 2px;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   text-transform: uppercase;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .about-text h2 {
   color: var(--black);
   margin-bottom: 25px;
   line-height: 1.2;
+  font-size: 2.2rem;
 }
+
 .about-text p {
   color: #555;
   margin-bottom: 20px;
-  line-height: 1.6;
+  line-height: 1.7;
+  font-size: 1rem;
 }
 
+.about-list {
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
 .about-list li {
   display: flex;
   align-items: center;
-  gap: 10px;
-  margin-bottom: 10px;
+  gap: 12px;
+  margin-bottom: 12px;
   color: #333;
   font-weight: 500;
+  font-size: 1rem;
 }
 .about-list li i {
   color: var(--gold);
+  font-size: 1.1rem;
 }
 
 /* -----------------------------------------------------------
-   7. SEÇÃO SERVIÇOS (Dark & Glass)
+   8. SEÇÃO SERVIÇOS
 ----------------------------------------------------------- */
 .services {
   background-color: var(--black);
   background-image: radial-gradient(circle at center, #1a1a1a 0%, #000000 100%);
   color: var(--white);
 }
-
 .services .section-title {
   color: var(--white);
 }
@@ -546,7 +593,6 @@ ul {
   margin-bottom: 25px;
   transition: 0.4s;
 }
-
 .service-card h3 {
   color: var(--white);
   font-size: 1.3rem;
@@ -565,7 +611,6 @@ ul {
 .service-card:hover h3::after {
   width: 80px;
 }
-
 .service-card p {
   color: #a0a0a0;
   font-size: 0.95rem;
@@ -573,21 +618,19 @@ ul {
 }
 
 /* -----------------------------------------------------------
-   8. SEÇÃO ESTATÍSTICAS
+   9. SEÇÃO ESTATÍSTICAS
 ----------------------------------------------------------- */
 .stats-section {
   background-color: var(--black-pure);
   padding: 60px 0;
   border-top: 1px solid #222;
 }
-
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 30px;
   align-items: center;
 }
-
 .stat-card {
   background: transparent;
   border-left: 3px solid var(--gold);
@@ -595,12 +638,10 @@ ul {
   text-align: center;
   transition: transform 0.3s ease;
 }
-
 .stat-card:hover {
   transform: translateY(-5px);
   background: linear-gradient(to bottom, rgba(197, 160, 89, 0.05), transparent);
 }
-
 .stat-number {
   font-size: 3.5rem;
   font-weight: 700;
@@ -609,7 +650,6 @@ ul {
   font-family: var(--font-heading);
   line-height: 1;
 }
-
 .stat-card p {
   color: #eeeeee;
   font-size: 0.85rem;
@@ -619,7 +659,7 @@ ul {
 }
 
 /* -----------------------------------------------------------
-   9. SEÇÃO DEPOIMENTOS
+   10. DEPOIMENTOS
 ----------------------------------------------------------- */
 .testimonials {
   background-color: var(--black-deep);
@@ -627,7 +667,6 @@ ul {
   border-bottom: 1px solid #222;
   text-align: center;
 }
-
 .testimonials .section-title {
   color: var(--white);
 }
@@ -655,14 +694,12 @@ ul {
   transform: translateY(0);
   text-align: left;
 }
-
 .testimonial-card:hover {
   transform: translateY(-10px);
   background: rgba(255, 255, 255, 0.05);
   border-color: var(--gold);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  box-shadow: var(--shadow-hover);
 }
-
 .quote-icon {
   font-size: 2rem;
   color: var(--gold);
@@ -709,7 +746,7 @@ ul {
 }
 
 /* -----------------------------------------------------------
-   10. LINKS ÚTEIS
+   11. LINKS ÚTEIS
 ----------------------------------------------------------- */
 .useful-links {
   background-color: #111;
@@ -744,14 +781,12 @@ ul {
   opacity: 1;
   transform: translateY(0);
 }
-
 .link-card:hover {
   border-color: var(--gold);
   background: #151515;
   transform: translateY(-3px);
   box-shadow: var(--shadow-sm);
 }
-
 .link-card .icon {
   font-size: 1.5rem;
   color: #666;
@@ -762,7 +797,6 @@ ul {
   color: var(--gold);
   transform: scale(1.1);
 }
-
 .link-card h3 {
   color: var(--gold);
   margin-bottom: 4px;
@@ -778,7 +812,7 @@ ul {
 }
 
 /* -----------------------------------------------------------
-   11. CONTATO
+   12. CONTATO
 ----------------------------------------------------------- */
 .contact-container {
   display: grid;
@@ -839,7 +873,7 @@ ul {
 }
 
 /* -----------------------------------------------------------
-   12. FOOTER
+   13. FOOTER
 ----------------------------------------------------------- */
 footer {
   background-color: var(--black-deep);
@@ -984,7 +1018,7 @@ footer {
 }
 
 /* -----------------------------------------------------------
-   13. BOTÃO WHATSAPP
+   14. BOTÃO WHATSAPP
 ----------------------------------------------------------- */
 .whatsapp-btn {
   position: fixed;
@@ -1030,10 +1064,10 @@ footer {
 }
 
 /* -----------------------------------------------------------
-   14. RESPONSIVIDADE (MEDIA QUERIES)
+   15. RESPONSIVIDADE (MEDIA QUERIES)
 ----------------------------------------------------------- */
 
-/* Tablets / Laptops Pequenos */
+/* Tablets / Laptops Pequenos (Até 1024px) */
 @media screen and (max-width: 1024px) {
   .footer-container {
     gap: 20px;
@@ -1061,33 +1095,48 @@ footer {
   }
 }
 
-/* Tablets Portrait / Celulares Grandes */
+/* Tablets Portrait / Celulares Grandes (Até 900px) */
 @media screen and (max-width: 900px) {
+  /* Ajuste Sobre Nós: vira 1 coluna e centraliza */
   .about-container {
-    grid-template-columns: 1fr;
+    flex-direction: column;
     text-align: center;
+    gap: 40px;
+  }
+  .about-image-wrapper {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 20px;
+    flex: auto;
+  }
+  .about-text {
+    width: 100%;
+    padding-left: 0;
+    align-items: center;
+    flex: auto;
   }
   .about-text h2 {
+    text-align: center;
+  }
+  .section-title.align-left {
     text-align: center;
   }
   .section-title.align-left::after {
     margin: 10px auto 0;
   }
-  .about-image-wrapper {
-    margin-bottom: 40px;
-  }
-  .circle-bg {
-    width: 300px;
-    height: 300px;
+  .about-list li {
+    justify-content: center;
   }
   .floating-card {
     right: 0;
     bottom: -20px;
-  }
-  .about-list li {
-    justify-content: center;
+    left: 0;
+    margin: auto;
+    width: fit-content;
+    height: 60px;
   }
 
+  /* Footer */
   .footer-container {
     grid-template-columns: 1fr;
     text-align: center;
@@ -1110,10 +1159,16 @@ footer {
     justify-content: center;
     text-align: left;
   }
+  .contact-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
 }
 
-/* Celulares Padrão */
+/* Celulares Padrão (Até 768px) */
 @media screen and (max-width: 768px) {
+  /* Nav */
   .nav-links {
     position: absolute;
     right: 0px;
@@ -1126,18 +1181,20 @@ footer {
     width: 60%;
     transform: translateX(100%);
     transition: transform 0.5s ease-in;
-    justify-content: space-around;
+    justify-content: center;
     padding-bottom: 50px;
+    gap: 30px;
   }
   .nav-active {
     transform: translateX(0%);
   }
   .burger {
     display: block;
+    cursor: pointer;
   }
   .nav-links li {
     opacity: 0;
-  } /* Animado via JS */
+  }
 
   @keyframes navLinkFade {
     from {
@@ -1150,27 +1207,52 @@ footer {
     }
   }
 
+  /* CORREÇÃO DO BOTÃO MOBILE */
   .nav-links .btn-cliente {
-    background: transparent;
-    width: 80%;
+    background-color: var(--gold) !important;
+    color: var(--black) !important;
+    border: none;
+    width: 100%;
+    max-width: 250px;
     justify-content: center;
+    padding: 15px 20px;
+    margin-top: 20px;
+    box-shadow: 0 4px 15px rgba(197, 160, 89, 0.3);
   }
-  .nav-links .btn-cliente:hover {
-    background: var(--gold);
+  .nav-links .btn-cliente:active {
+    transform: scale(0.95);
   }
 
   .hero h1 {
     font-size: 2.5rem;
   }
-  .contact-container {
+  .hero-glass-card {
+    padding: 30px;
+    margin: 0 20px;
+    text-align: center;
+  }
+  .hero-btns {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  .btn-outline {
+    margin-left: 0;
+  }
+
+  .contact-wrapper {
     grid-template-columns: 1fr;
   }
+  .form-box {
+    padding: 25px;
+  }
+
   .testimonial-card {
     min-width: 100%;
   }
 }
 
-/* Celulares Pequenos */
+/* Celulares Pequenos (Até 600px) */
 @media screen and (max-width: 600px) {
   .services-grid,
   .stats-grid,
@@ -1178,12 +1260,14 @@ footer {
     grid-template-columns: 1fr;
   }
 
+  /* Stats */
   .stat-card {
     border-left: none;
     border-bottom: 3px solid var(--gold);
     padding-bottom: 30px;
   }
 
+  /* Preloader */
   .logo-circle-wrapper {
     width: 140px;
     height: 140px;
@@ -1191,6 +1275,8 @@ footer {
   .preloader-logo {
     width: 70px;
   }
+
+  /* Whats */
   .whatsapp-btn {
     width: 50px;
     height: 50px;
@@ -1198,9 +1284,18 @@ footer {
     bottom: 20px;
     right: 20px;
   }
+
+  /* Sobre Nós Ajuste Fino */
+  .circle-bg {
+    width: 300px;
+    height: 300px;
+  }
+  .about-text h2 {
+    font-size: 1.8rem;
+  }
 }
 
-/* Celulares Muito Pequenos */
+/* Celulares Muito Pequenos (Até 480px) */
 @media screen and (max-width: 480px) {
   .links-grid {
     gap: 10px;
@@ -1208,5 +1303,8 @@ footer {
   .link-card {
     width: calc(50% - 10px);
     min-width: auto;
+  }
+  .nav-links {
+    width: 80%;
   }
 }
